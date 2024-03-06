@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+    <item
+        android:id="@+id/nav_bio"
+        android:title="You Bio">
+    </item>
+    <item
+        android:id="@+id/nav_menu"
+        android:title="Menu">
+    </item>
+    <item
+        android:id="@+id/nav_legs"
+        android:title="Legs">
+    </item>
+    <item
+        android:id="@+id/nav_hands"
+        android:title="Hands">
+    </item>
+    <item
+        android:id="@+id/nav_back"
+        android:title="Back">
+    </item>
+    <item
+        android:id="@+id/nav_bosom"
+        android:title="Bosom">
+    </item>
+    <item
+        android:id="@+id/nav_exit"
+        android:title="Exit">
+    </item>
+</menu>

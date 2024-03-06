@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Places"
+        tools:targetApi="31">
+
+<!--        BOSOM-->
+
+        <activity
+            android:name=".BTNSNEWMACHINE.BOSOM.dialog.EditBosomMachine"
+            android:label="Delete"
+            android:exported="false"
+            android:parentActivityName=".BTNSNEWMACHINE.BOSOM.activity.Bosom"/>
+        <activity
+            android:name=".BTNSNEWMACHINE.BOSOM.activity.Bosom"
+            android:exported="false"/>
+
+<!--        BACK-->
+
+        <activity
+            android:name=".BTNSNEWMACHINE.BACK.dialog.EditBackMachine"
+            android:exported="false"
+            android:label="Delete"
+            android:parentActivityName=".BTNSNEWMACHINE.BACK.activity.Back" />
+        <activity
+            android:name=".BTNSNEWMACHINE.BACK.activity.Back"
+            android:exported="false" />
+
+<!--        HANDS-->
+
+        <activity
+            android:name=".BTNSNEWMACHINE.HANDS.dialogs.EditHandsMachine"
+            android:exported="false"
+            android:label="Delete"
+            android:parentActivityName=".BTNSNEWMACHINE.HANDS.activity.Hands" />
+        <activity
+            android:name=".BTNSNEWMACHINE.HANDS.activity.Hands"
+            android:exported="false"/>
+
+<!--        LEGS-->
+
+        <activity
+            android:name=".BTNSNEWMACHINE.LEGS.dialogs.EditLegsMachine"
+            android:exported="false"
+            android:label="Delete"
+            android:parentActivityName=".BTNSNEWMACHINE.LEGS.activity.Legs" />
+        <activity
+            android:name=".BTNSNEWMACHINE.LEGS.activity.Legs"
+            android:exported="false" />
+
+<!--        MAIN-->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
