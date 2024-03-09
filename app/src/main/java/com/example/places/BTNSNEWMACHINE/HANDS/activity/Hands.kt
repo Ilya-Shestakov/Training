@@ -26,6 +26,7 @@ import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.MainActivity
 import com.example.places.BTNSNEWMACHINE.HANDS.adapter.MyAdapterHands
 import com.example.places.R
+import com.example.places.nav_menu.bio
 import com.google.android.material.navigation.NavigationView
 
 class Hands : AppCompatActivity() {
@@ -63,7 +64,7 @@ class Hands : AppCompatActivity() {
         navVoidHands.setNavigationItemSelectedListener {
             when(it.itemId)
             {
-                R.id.nav_bio -> Toast.makeText(applicationContext, "Tap to ", Toast.LENGTH_SHORT).show()
+                R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -101,6 +102,12 @@ class Hands : AppCompatActivity() {
 
     fun btnToBack(view: View){
         val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun MethodOpenBio(){
+        val intent = Intent(this, bio::class.java)
         startActivity(intent)
         finish()
     }

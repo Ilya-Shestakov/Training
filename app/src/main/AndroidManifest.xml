@@ -12,20 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
-
-<!--        BOSOM-->
-
+        <activity
+            android:name=".nav_menu.bio"
+            android:exported="false" />
+        <!-- BOSOM -->
         <activity
             android:name=".BTNSNEWMACHINE.BOSOM.dialog.EditBosomMachine"
-            android:label="Delete"
             android:exported="false"
-            android:parentActivityName=".BTNSNEWMACHINE.BOSOM.activity.Bosom"/>
+            android:label="Delete"
+            android:parentActivityName=".BTNSNEWMACHINE.BOSOM.activity.Bosom" />
         <activity
             android:name=".BTNSNEWMACHINE.BOSOM.activity.Bosom"
-            android:exported="false"/>
-
-<!--        BACK-->
-
+            android:exported="false" /> <!-- BACK -->
         <activity
             android:name=".BTNSNEWMACHINE.BACK.dialog.EditBackMachine"
             android:exported="false"
@@ -33,10 +31,7 @@
             android:parentActivityName=".BTNSNEWMACHINE.BACK.activity.Back" />
         <activity
             android:name=".BTNSNEWMACHINE.BACK.activity.Back"
-            android:exported="false" />
-
-<!--        HANDS-->
-
+            android:exported="false" /> <!-- HANDS -->
         <activity
             android:name=".BTNSNEWMACHINE.HANDS.dialogs.EditHandsMachine"
             android:exported="false"
@@ -44,10 +39,7 @@
             android:parentActivityName=".BTNSNEWMACHINE.HANDS.activity.Hands" />
         <activity
             android:name=".BTNSNEWMACHINE.HANDS.activity.Hands"
-            android:exported="false"/>
-
-<!--        LEGS-->
-
+            android:exported="false" /> <!-- LEGS -->
         <activity
             android:name=".BTNSNEWMACHINE.LEGS.dialogs.EditLegsMachine"
             android:exported="false"
@@ -55,10 +47,7 @@
             android:parentActivityName=".BTNSNEWMACHINE.LEGS.activity.Legs" />
         <activity
             android:name=".BTNSNEWMACHINE.LEGS.activity.Legs"
-            android:exported="false" />
-
-<!--        MAIN-->
-
+            android:exported="false" /> <!-- MAIN -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/desine_top_block"
+    android:layout_gravity="center"
+    tools:context=".nav_menu.bio">
+
+    <TextView
+        android:id="@+id/TitleUInfe"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Your Info"
+        android:gravity="center"
+        android:textSize="45dp"
+        android:fontFamily="@font/baloo_bhai"
+        />
+
+    <LinearLayout
+        android:id="@+id/Linear_Edit_Bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/TitleUInfe"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/BtnSaveBio"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Age: "
+                android:textStyle="normal"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:fontFamily="@font/baloo_bhai"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Age"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textSize="35dp"
+                    android:fontFamily="@font/baloo_bhai"
+                    >
+
+                </TextView>
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Weight: "
+                android:textStyle="normal"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:fontFamily="@font/baloo_bhai"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textSize="35dp"
+                    android:fontFamily="@font/baloo_bhai"
+                    >
+
+                </TextView>
+
+                <SeekBar
+                    android:id="@+id/seekBarWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:text="Date: "
+                android:textStyle="normal"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:fontFamily="@font/baloo_bhai"
+                android:textColor="@color/black"
+                />
+
+            <EditText
+                android:id="@+id/Date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:maxLength="9"
+                android:hint="**  /  **  /  **"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textColorHint="#888888"
+                android:fontFamily="@font/baloo_bhai"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="btnToBack_Bio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+
+        android:background="@drawable/shadow_and_border"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_keyboard_backspace_24"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/BtnSaveBio"
+        android:onClick="btnSave_Bio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+
+        android:background="@drawable/shadow_and_border"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/baseline_save_24"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
