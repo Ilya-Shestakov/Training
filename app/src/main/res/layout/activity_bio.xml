@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/desine_top_block"
     android:layout_gravity="center"
-    tools:context=".nav_menu.bio">
+    tools:context=".nav_menu.Bio">
 
     <TextView
         android:id="@+id/TitleUInfe"
@@ -16,6 +16,7 @@
         android:text="Your Info"
         android:gravity="center"
         android:textSize="45dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/baloo_bhai"
         />
 
@@ -60,6 +61,7 @@
                     android:text="0"
                     android:gravity="center"
                     android:textSize="35dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/baloo_bhai"
                     >
 
@@ -107,6 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="0"
+                    android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="35dp"
                     android:fontFamily="@font/baloo_bhai"

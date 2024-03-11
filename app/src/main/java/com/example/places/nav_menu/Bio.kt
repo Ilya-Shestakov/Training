@@ -11,9 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.places.MainActivity
 import com.example.places.R
-import kotlinx.coroutines.MainScope
 
-class bio : AppCompatActivity() {
+class Bio : AppCompatActivity() {
 
     lateinit var valueAge: TextView
     lateinit var valueWeight: TextView

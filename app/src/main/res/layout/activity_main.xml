@@ -51,106 +51,34 @@
             app:layout_constraintTop_toBottomOf="@+id/TitleTrains">
 
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollView"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnTraining"
+                android:layout_width="330dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/desine_osn_btn"
 
-                <LinearLayout
+                android:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="@+id/topBlock"
+                app:layout_constraintStart_toStartOf="@+id/topBlock"
+                app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btnCalendar"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:background="@drawable/desine_btns"
-                        android:backgroundTint="@null">
+                    android:fontFamily="@font/baloo_bhai"
+                    android:gravity="center"
+                    android:text="New training"
+                    android:textColor="@color/black"
+                    android:textSize="35dp" />
 
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/baloo_bhai"
-
-                            android:gravity="center"
-                            android:text="Calendar"
-                            android:textColor="@color/black"
-                            android:textSize="27dp" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btnEditBio"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/desine_btns"
-                        android:backgroundTint="@null">
-
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/baloo_bhai"
-
-                            android:gravity="center"
-                            android:text="Edit\nBio"
-                            android:textColor="@color/black"
-                            android:textSize="27dp" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btnMachine"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/desine_btns"
-                        android:backgroundTint="@null">
-
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/baloo_bhai"
-
-                            android:gravity="center"
-                            android:text="Machine"
-                            android:textColor="@color/black"
-                            android:textSize="27dp" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btnAllWeight"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/desine_btns"
-                        android:backgroundTint="@null">
-
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/baloo_bhai"
-
-                            android:gravity="center"
-                            android:text="All\nWeight"
-                            android:textColor="@color/black"
-                            android:textSize="27dp" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnLegs"
-                android:layout_width="310dp"
+                android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
@@ -162,20 +90,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/topBlock">
 
                 <TextView
-                    android:layout_width="310dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
 
                     android:fontFamily="@font/baloo_bhai"
                     android:gravity="center"
                     android:text="Legs"
                     android:textColor="@color/black"
-                    android:textSize="35dp" />
+                    android:textSize="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnHands"
-                android:layout_width="310dp"
+                android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
@@ -194,13 +122,13 @@
                     android:gravity="center"
                     android:text="Hands"
                     android:textColor="@color/black"
-                    android:textSize="35dp" />
+                    android:textSize="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnBack"
-                android:layout_width="310dp"
+                android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
@@ -219,13 +147,13 @@
                     android:gravity="center"
                     android:text="Back"
                     android:textColor="@color/black"
-                    android:textSize="35dp" />
+                    android:textSize="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnBosom"
-                android:layout_width="310dp"
+                android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
@@ -244,9 +172,34 @@
                     android:gravity="center"
                     android:text="Bosom"
                     android:textColor="@color/black"
-                    android:textSize="35dp" />
+                    android:textSize="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnMore"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/desine_osn_btn"
+
+                app:layout_constraintEnd_toEndOf="@+id/topBlock"
+                app:layout_constraintStart_toStartOf="@+id/topBlock"
+                app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginHorizontal="10dp"
+                    android:fontFamily="@font/baloo_bhai"
+                    android:gravity="center"
+                    android:text="More"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

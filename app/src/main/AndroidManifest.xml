@@ -13,8 +13,8 @@
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
         <activity
-            android:name=".nav_menu.bio"
-            android:exported="false" />
+            android:name=".nav_menu.Bio"
+            android:exported="false"/>
         <!-- BOSOM -->
         <activity
             android:name=".BTNSNEWMACHINE.BOSOM.dialog.EditBosomMachine"

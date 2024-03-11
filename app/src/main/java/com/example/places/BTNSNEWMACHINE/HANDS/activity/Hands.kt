@@ -26,7 +26,7 @@ import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.MainActivity
 import com.example.places.BTNSNEWMACHINE.HANDS.adapter.MyAdapterHands
 import com.example.places.R
-import com.example.places.nav_menu.bio
+import com.example.places.nav_menu.Bio
 import com.google.android.material.navigation.NavigationView
 
 class Hands : AppCompatActivity() {
@@ -107,7 +107,7 @@ class Hands : AppCompatActivity() {
     }
 
     private fun MethodOpenBio(){
-        val intent = Intent(this, bio::class.java)
+        val intent = Intent(this, Bio::class.java)
         startActivity(intent)
         finish()
     }
