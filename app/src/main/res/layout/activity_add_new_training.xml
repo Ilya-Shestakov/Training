@@ -2,41 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="200dp"
-    android:background="@drawable/back_to_dialog"
     android:layout_gravity="center"
-    tools:context=".BTNSNEWMACHINE.BOSOM.delete.EditBosomMachine">
+    android:background="@drawable/back_to_dialog"
+    android:layout_width="300dp"
+    android:layout_height="200dp">
 
     <EditText
-        android:id="@+id/editTextRedactBosom"
+        android:id="@+id/editTextTraining"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:maxLength="20"
+        android:hint="New training"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
-        android:hint="Name..."
-        android:textColorHint="@color/gray"
-        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/uploadBosom"
+        android:onClick="btnAddTrainingInDialog"
         android:layout_width="100dp"
         android:layout_height="40dp"
+        android:layout_gravity="center"
         android:background="@drawable/desine_small_btns"
 
-        app:layout_constraintTop_toBottomOf="@+id/editTextRedactBosom"
-        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTraining"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Delete"
+            android:text="Add"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:gravity="center"

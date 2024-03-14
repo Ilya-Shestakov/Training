@@ -8,6 +8,10 @@
         android:title="You Bio">
     </item>
     <item
+        android:id="@+id/nav_training"
+        android:title="Training">
+    </item>
+    <item
         android:id="@+id/nav_menu"
         android:title="Menu">
     </item>

@@ -47,4 +47,5 @@
     </string>
     <string name="title_activity_bosom">Bosom</string>
     <string name="title_activity_edit_bosom_machine">EditBosom_machine</string>
+    <string name="title_activity_add_new_training">AddNewTraining</string>
 </resources>

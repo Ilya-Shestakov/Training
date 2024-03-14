@@ -23,10 +23,11 @@ import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DatalistLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.adapters.MyAdapterLegs
-import com.example.places.BTNSNEWMACHINE.LEGS.dialogs.EditLegsMachine
+import com.example.places.BTNSNEWMACHINE.LEGS.delete.EditLegsMachine
 import com.example.places.MainActivity
 import com.example.places.R
-import com.example.places.nav_menu.Bio
+import com.example.places.PopupMenu.Bio
+import com.example.places.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Legs : AppCompatActivity() {
@@ -64,6 +65,7 @@ class Legs : AppCompatActivity() {
             navVoid.setNavigationItemSelectedListener {
                 when(it.itemId)
                 {
+                    R.id.nav_training -> MethodDispTrainings()
                     R.id.nav_bio -> MethodOpenBio()
                     R.id.nav_menu -> MethodDispMenu()
                     R.id.nav_legs -> MethodDispLegs()
@@ -76,6 +78,11 @@ class Legs : AppCompatActivity() {
             }
     }
 
+    private fun MethodDispTrainings() {
+        val intent = Intent(this, Trainings::class.java)
+        startActivity(intent)
+        finish()
+    }
     private fun MethodDispLegs() {
         val intent = Intent(this, Legs::class.java)
         startActivity(intent)
@@ -145,7 +152,7 @@ class Legs : AppCompatActivity() {
     fun btnAddMachoneToLegs(view: View){
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_new_machine_legs)
+        dialog.setContentView(R.layout.dialog_new_machine)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
         }

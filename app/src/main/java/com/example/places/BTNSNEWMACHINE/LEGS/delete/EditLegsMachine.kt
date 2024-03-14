@@ -1,4 +1,4 @@
-package com.example.places.BTNSNEWMACHINE.LEGS.dialogs
+package com.example.places.BTNSNEWMACHINE.LEGS.delete
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

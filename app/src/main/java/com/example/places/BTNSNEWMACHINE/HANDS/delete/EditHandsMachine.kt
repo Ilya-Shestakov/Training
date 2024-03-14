@@ -1,4 +1,4 @@
-package com.example.places.BTNSNEWMACHINE.BOSOM.dialog
+package com.example.places.BTNSNEWMACHINE.HANDS.delete
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,22 +6,24 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
-import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
+import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
+import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.R
 
-class EditBosomMachine : AppCompatActivity() {
+class EditHandsMachine : AppCompatActivity() {
 
-    private lateinit var db: DBHalperBosom
+    private lateinit var db: DBHalperHands
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_bosom_machine)
+        setContentView(R.layout.activity_edit_hands_machine)
 
-        var name = findViewById<EditText>(R.id.editTextRedactBosom)
-        val del = findViewById<ConstraintLayout>(R.id.uploadBosom)
+        var name = findViewById<EditText>(R.id.editTextRedactHand)
+        val del = findViewById<ConstraintLayout>(R.id.uploadHand)
 
-        db = DBHalperBosom(this)
+        db = DBHalperHands(this)
+
+
 
         name.setText(intent.getStringExtra("name"))
 
@@ -31,7 +33,7 @@ class EditBosomMachine : AppCompatActivity() {
 
             if (deletedata==true){
                 Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditBosomMachine, Bosom::class.java)
+                val intent = Intent(this@EditHandsMachine, Hands::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -45,4 +47,5 @@ class EditBosomMachine : AppCompatActivity() {
         super.onDestroy()
         finishAffinity()
     }
+
 }

@@ -19,14 +19,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
-import com.example.places.BTNSNEWMACHINE.HANDS.dialogs.EditHandsMachine
+import com.example.places.BTNSNEWMACHINE.HANDS.delete.EditHandsMachine
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DatalistHands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.MainActivity
 import com.example.places.BTNSNEWMACHINE.HANDS.adapter.MyAdapterHands
 import com.example.places.R
-import com.example.places.nav_menu.Bio
+import com.example.places.PopupMenu.Bio
+import com.example.places.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Hands : AppCompatActivity() {
@@ -64,6 +65,7 @@ class Hands : AppCompatActivity() {
         navVoidHands.setNavigationItemSelectedListener {
             when(it.itemId)
             {
+                R.id.nav_training -> MethodDispTrainings()
                 R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
@@ -74,6 +76,12 @@ class Hands : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun MethodDispTrainings() {
+        val intent = Intent(this, Trainings::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun MethodDispLegs() {
@@ -140,7 +148,7 @@ class Hands : AppCompatActivity() {
     fun btnAddMachoneToLegs(view: View){
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_new_machine_legs)
+        dialog.setContentView(R.layout.dialog_new_machine)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }

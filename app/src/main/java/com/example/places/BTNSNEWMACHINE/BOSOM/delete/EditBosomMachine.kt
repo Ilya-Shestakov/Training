@@ -1,31 +1,27 @@
-package com.example.places.BTNSNEWMACHINE.BACK.dialog
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+package com.example.places.BTNSNEWMACHINE.BOSOM.delete
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
-import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
-import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
+import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
+import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.R
 
-class EditBackMachine : AppCompatActivity() {
+class EditBosomMachine : AppCompatActivity() {
 
-    private lateinit var db: DBHalperBack
+    private lateinit var db: DBHalperBosom
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_back_machine)
+        setContentView(R.layout.activity_edit_bosom_machine)
 
-        var name = findViewById<EditText>(R.id.editTextRedactBack)
-        val del = findViewById<ConstraintLayout>(R.id.uploadBack)
+        var name = findViewById<EditText>(R.id.editTextRedactBosom)
+        val del = findViewById<ConstraintLayout>(R.id.uploadBosom)
 
-        db = DBHalperBack(this)
-
-
+        db = DBHalperBosom(this)
 
         name.setText(intent.getStringExtra("name"))
 
@@ -35,7 +31,7 @@ class EditBackMachine : AppCompatActivity() {
 
             if (deletedata==true){
                 Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditBackMachine, Back::class.java)
+                val intent = Intent(this@EditBosomMachine, Bosom::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -45,4 +41,8 @@ class EditBackMachine : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        finishAffinity()
+    }
 }

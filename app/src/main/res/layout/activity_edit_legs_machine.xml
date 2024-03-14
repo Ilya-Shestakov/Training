@@ -6,7 +6,7 @@
     android:layout_height="200dp"
     android:background="@drawable/back_to_dialog"
     android:layout_gravity="center"
-    tools:context=".BTNSNEWMACHINE.LEGS.dialogs.EditLegsMachine">
+    tools:context=".BTNSNEWMACHINE.LEGS.delete.EditLegsMachine">
 
     <EditText
         android:id="@+id/editTextRedact"

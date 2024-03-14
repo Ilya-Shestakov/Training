@@ -1,27 +1,28 @@
-package com.example.places.BTNSNEWMACHINE.HANDS.dialogs
+package com.example.places.BTNSNEWMACHINE.BACK.delete
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
+import android.content.Intent
 import android.widget.EditText
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
-import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
+import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
+import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.R
 
-class EditHandsMachine : AppCompatActivity() {
+class EditBackMachine : AppCompatActivity() {
 
-    private lateinit var db: DBHalperHands
+    private lateinit var db: DBHalperBack
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_hands_machine)
+        setContentView(R.layout.activity_edit_back_machine)
 
-        var name = findViewById<EditText>(R.id.editTextRedactHand)
-        val del = findViewById<ConstraintLayout>(R.id.uploadHand)
+        var name = findViewById<EditText>(R.id.editTextRedactBack)
+        val del = findViewById<ConstraintLayout>(R.id.uploadBack)
 
-        db = DBHalperHands(this)
+        db = DBHalperBack(this)
 
 
 
@@ -33,7 +34,7 @@ class EditHandsMachine : AppCompatActivity() {
 
             if (deletedata==true){
                 Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditHandsMachine, Hands::class.java)
+                val intent = Intent(this@EditBackMachine, Back::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -41,11 +42,6 @@ class EditHandsMachine : AppCompatActivity() {
                 Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        finishAffinity()
     }
 
 }

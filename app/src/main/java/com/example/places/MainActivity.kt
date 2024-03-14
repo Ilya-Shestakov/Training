@@ -15,7 +15,7 @@ import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
-import com.example.places.nav_menu.Bio
+import com.example.places.PopupMenu.Bio
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -30,45 +30,49 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navVoid: NavigationView = findViewById(R.id.navView)
-        val btnMore: ConstraintLayout = findViewById(R.id.btnMore)
         val btnLegs: ConstraintLayout = findViewById(R.id.btnLegs)
         val btnHands: ConstraintLayout = findViewById(R.id.btnHands)
         val btnBack: ConstraintLayout = findViewById(R.id.btnBack)
+        val btnTraining: ConstraintLayout = findViewById(R.id.btnTraining)
         val btnBosom: ConstraintLayout = findViewById(R.id.btnBosom)
 
-        btnMore.setOnClickListener { view ->
+//        btnMore.setOnClickListener { view ->
+//
+//            val UpMenu = PopupMenu(this@MainActivity, view)
+//            UpMenu.inflate(R.menu.opening_btn)
+//            UpMenu.setOnMenuItemClickListener { menuItem ->
+//
+//                when(menuItem.itemId){
+//
+//                    R.id.btnCalendar -> {
+//                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
+//                        true
+//                    }
+//                    R.id.btnBio -> {
+//                        val intent = Intent(this, Bio::class.java)
+//                        startActivity(intent)
+//                        finish()
+//                        true
+//                    }
+//                    R.id.btnCalendar -> {
+//                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
+//                        true
+//                    }
+//                    else ->{
+//                        false
+//                    }
+//                }
+//            }
+//            UpMenu.show()
+//
+//        }
 
-            val UpMenu = PopupMenu(this@MainActivity, view)
-            UpMenu.inflate(R.menu.opening_btn)
-            UpMenu.setOnMenuItemClickListener { menuItem ->
-
-                when(menuItem.itemId){
-
-                    R.id.btnCalendar -> {
-                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-                    R.id.btnBio -> {
-                        val intent = Intent(this, Bio::class.java)
-                        startActivity(intent)
-                        finish()
-                        true
-                    }
-                    R.id.btnCalendar -> {
-                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-                    else ->{
-                        false
-                    }
-                }
-            }
-            UpMenu.show()
-
-        }
 
         btnLegs.setOnClickListener {
             MethodDispLegs()
+        }
+        btnTraining.setOnClickListener {
+            MethodDispTrainings()
         }
         btnHands.setOnClickListener {
             MethodDispHands()
@@ -89,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         navVoid.setNavigationItemSelectedListener {
             when(it.itemId)
             {
+                R.id.nav_training -> MethodDispTrainings()
                 R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
@@ -101,6 +106,13 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun MethodDispTrainings() {
+        val intent = Intent(this, Trainings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toogle.onOptionsItemSelected(item)){
             return true

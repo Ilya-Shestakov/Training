@@ -21,13 +21,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
 import com.example.places.BTNSNEWMACHINE.BACK.DB.DatalistBack
 import com.example.places.BTNSNEWMACHINE.BACK.adapter.MyAdapterBack
-import com.example.places.BTNSNEWMACHINE.BACK.dialog.EditBackMachine
+import com.example.places.BTNSNEWMACHINE.BACK.delete.EditBackMachine
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
-import com.example.places.BTNSNEWMACHINE.BOSOM.dialog.EditBosomMachine
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.MainActivity
+import com.example.places.PopupMenu.Bio
 import com.example.places.R
+import com.example.places.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Back : AppCompatActivity() {
@@ -45,19 +46,20 @@ class Back : AppCompatActivity() {
         setContentView(R.layout.activity_back)
 
         //Find
-        val drawerLayoutHands: DrawerLayout = findViewById(R.id.drawerLayoutBack)
+        val drawerLayoutBack: DrawerLayout = findViewById(R.id.drawerLayoutBack)
         val navVoidHands: NavigationView = findViewById(R.id.navViewBack)
         recyclerViewBack = findViewById(R.id.recyclerViewBack)
         db = DBHalperBack(this)
         dbh = DBHalperBack(this)
+
 
         recyclerViewBack.layoutManager = LinearLayoutManager(this)
         recyclerViewBack.setHasFixedSize(true)
         dispayuser()
 
         //Drawer
-        toogle = ActionBarDrawerToggle(this, drawerLayoutHands, R.string.open, R.string.close)
-        drawerLayoutHands.addDrawerListener(toogle)
+        toogle = ActionBarDrawerToggle(this, drawerLayoutBack, R.string.open, R.string.close)
+        drawerLayoutBack.addDrawerListener(toogle)
         toogle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -65,7 +67,8 @@ class Back : AppCompatActivity() {
         navVoidHands.setNavigationItemSelectedListener {
             when(it.itemId)
             {
-                R.id.nav_bio -> Toast.makeText(applicationContext, "Tap to ", Toast.LENGTH_SHORT).show()
+                R.id.nav_training -> MethodDispTrainings()
+                R.id.nav_bio -> MethodDispBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -75,6 +78,18 @@ class Back : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun MethodDispTrainings() {
+        val intent = Intent(this, Trainings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun MethodDispBio(){
+        val intent = Intent(this, Bio::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun MethodDispLegs() {
@@ -127,6 +142,7 @@ class Back : AppCompatActivity() {
                 val intent = Intent(this@Back, EditBackMachine::class.java)
                 intent.putExtra("name", newArrBack[position].name)
                 startActivity(intent)
+                finish()
             }
         })
     }
@@ -135,7 +151,7 @@ class Back : AppCompatActivity() {
     fun btnAddMachineToBack(view: View){
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_new_machine_legs)
+        dialog.setContentView(R.layout.dialog_new_machine)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }

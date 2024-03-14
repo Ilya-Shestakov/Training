@@ -13,11 +13,19 @@
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
         <activity
-            android:name=".nav_menu.Bio"
-            android:exported="false"/>
-        <!-- BOSOM -->
+            android:name=".EditTraining"
+            android:exported="false"
+            android:label="Training"
+            android:parentActivityName=".Trainings"
+            />
         <activity
-            android:name=".BTNSNEWMACHINE.BOSOM.dialog.EditBosomMachine"
+            android:name=".Trainings"
+            android:exported="false" />
+        <activity
+            android:name=".PopupMenu.Bio"
+            android:exported="false" /> <!-- BOSOM -->
+        <activity
+            android:name=".BTNSNEWMACHINE.BOSOM.delete.EditBosomMachine"
             android:exported="false"
             android:label="Delete"
             android:parentActivityName=".BTNSNEWMACHINE.BOSOM.activity.Bosom" />
@@ -25,7 +33,7 @@
             android:name=".BTNSNEWMACHINE.BOSOM.activity.Bosom"
             android:exported="false" /> <!-- BACK -->
         <activity
-            android:name=".BTNSNEWMACHINE.BACK.dialog.EditBackMachine"
+            android:name=".BTNSNEWMACHINE.BACK.delete.EditBackMachine"
             android:exported="false"
             android:label="Delete"
             android:parentActivityName=".BTNSNEWMACHINE.BACK.activity.Back" />
@@ -33,7 +41,7 @@
             android:name=".BTNSNEWMACHINE.BACK.activity.Back"
             android:exported="false" /> <!-- HANDS -->
         <activity
-            android:name=".BTNSNEWMACHINE.HANDS.dialogs.EditHandsMachine"
+            android:name=".BTNSNEWMACHINE.HANDS.delete.EditHandsMachine"
             android:exported="false"
             android:label="Delete"
             android:parentActivityName=".BTNSNEWMACHINE.HANDS.activity.Hands" />
@@ -41,7 +49,7 @@
             android:name=".BTNSNEWMACHINE.HANDS.activity.Hands"
             android:exported="false" /> <!-- LEGS -->
         <activity
-            android:name=".BTNSNEWMACHINE.LEGS.dialogs.EditLegsMachine"
+            android:name=".BTNSNEWMACHINE.LEGS.delete.EditLegsMachine"
             android:exported="false"
             android:label="Delete"
             android:parentActivityName=".BTNSNEWMACHINE.LEGS.activity.Legs" />
