@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.R
+import com.example.places.Trainings.activity.Trainings
 
 class EditLegsMachine : AppCompatActivity() {
 
@@ -40,10 +41,10 @@ class EditLegsMachine : AppCompatActivity() {
             }
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
-        finishAffinity()
+        val intent = Intent(this, Legs::class.java)
+        startActivity(intent)
+        finish()
     }
-
 }

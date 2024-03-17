@@ -1,4 +1,4 @@
-package com.example.places
+package com.example.places.Trainings.activity
 
 import android.app.Dialog
 import android.content.Intent
@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -21,7 +22,12 @@ import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
+import com.example.places.Main.MainActivity
 import com.example.places.PopupMenu.Bio
+import com.example.places.R
+import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
+import com.example.places.Trainings.Trainings.DB.DatalistTrainings
+import com.example.places.Trainings.Trainings.Adapter.MyAdapterTainings
 import com.google.android.material.navigation.NavigationView
 
 class Trainings : AppCompatActivity() {
@@ -38,13 +44,14 @@ class Trainings : AppCompatActivity() {
 
         val drawerLayoutTrainings: DrawerLayout = findViewById(R.id.drawerLayoutTrainings)
         val navVoidTrainings: NavigationView = findViewById(R.id.navViewTraining)
-        recyclerViewTrainings = findViewById(R.id.recyclerViewTrinings)
 
         toogle = ActionBarDrawerToggle(this, drawerLayoutTrainings, R.string.open, R.string.close)
         drawerLayoutTrainings.addDrawerListener(toogle)
         toogle.syncState()
 
         db = DBHalperTrainings(this)
+
+        recyclerViewTrainings = findViewById(R.id.recyclerViewTrinings)
 
         recyclerViewTrainings.layoutManager = LinearLayoutManager(this)
         recyclerViewTrainings.setHasFixedSize(true)
@@ -130,7 +137,14 @@ class Trainings : AppCompatActivity() {
     fun btnAddTrainingInDialog(view: View) {
         val name = dialog.findViewById<EditText>(R.id.editTextTraining)
         val names = name.text.toString().trim()
-        val savedataTraining = db.saveuserdatatrainings(names)
+
+        val dateDay = dialog.findViewById<TextView>(R.id.IdDay).toString()
+        val dateMonth = dialog.findViewById<TextView>(R.id.IdMonth).toString()
+        val dateYear = dialog.findViewById<TextView>(R.id.IdYear).toString()
+        val date = "$dateDay : $dateMonth : $dateYear"
+
+        val savedataTraining = db.saveuserdatatrainings(names, date)
+
         if (TextUtils.isEmpty(names)) {
             Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
             dialog.cancel()
@@ -142,27 +156,30 @@ class Trainings : AppCompatActivity() {
                 }
                 dialog.cancel()
             } else {
-                Toast.makeText(this, "Exist", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                 dialog.cancel()
             }
         }
     }
     private fun dispayuser() {
+
         val newcursor: Cursor? = db!!.gettext()
         newArrTrainings = ArrayList<DatalistTrainings>()
         while (newcursor!!.moveToNext()){
             val uname = newcursor.getString(0)
-            newArrTrainings.add(DatalistTrainings(uname))
+            newArrTrainings.add(DatalistTrainings(uname, "00:00:00"))
         }
         adapter = MyAdapterTainings(newArrTrainings)
         recyclerViewTrainings.adapter = adapter
-        adapter.OnItemClickListener(object: MyAdapterTainings.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                val intent = Intent(this@Trainings, EditTraining::class.java)
-                //intent.putExtra("name", newArrBack[position].name)
-                startActivity(intent)
-                finish()
-            }
-        })
+
+//        adapter.OnItemClickListener(object: MyAdapterTainings.onItemClickListener {
+//            override fun onItemClick(position: Int) {
+//                val intent = Intent(this@Trainings, EditTraining::class.java)
+//                //intent.putExtra("name", newArrBack[position].name)
+//                startActivity(intent)
+//                finish()
+//            }
+//        })
+
     }
 }

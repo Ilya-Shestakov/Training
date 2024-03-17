@@ -24,10 +24,10 @@ import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DatalistLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.adapters.MyAdapterLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.delete.EditLegsMachine
-import com.example.places.MainActivity
+import com.example.places.Main.MainActivity
 import com.example.places.R
 import com.example.places.PopupMenu.Bio
-import com.example.places.Trainings
+import com.example.places.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Legs : AppCompatActivity() {
@@ -128,26 +128,21 @@ class Legs : AppCompatActivity() {
     private fun dispayuser() {
         val newcursor: Cursor? = dbh!!.gettext()
         newArry = ArrayList<DatalistLegs>()
-        while (newcursor!!.moveToNext()){
+        while (newcursor!!.moveToNext()) {
             val uname = newcursor.getString(0)
             newArry.add(DatalistLegs(uname))
         }
         adapter = MyAdapterLegs(newArry)
         recyclerView.adapter = adapter
-        adapter.OnItemClickListener(object: MyAdapterLegs.onItemClickListener{
+        adapter.OnItemClickListener(object : MyAdapterLegs.onItemClickListener {
             override fun onItemClick(position: Int) {
                 val intent = Intent(this@Legs, EditLegsMachine::class.java)
                 intent.putExtra("name", newArry[position].name)
                 startActivity(intent)
+                finish()
             }
         })
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        finishAffinity()
-    }
-
     //Btn start Dialog
     fun btnAddMachoneToLegs(view: View){
         dialog = Dialog(this)

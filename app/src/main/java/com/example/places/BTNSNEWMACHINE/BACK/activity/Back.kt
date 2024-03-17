@@ -25,10 +25,10 @@ import com.example.places.BTNSNEWMACHINE.BACK.delete.EditBackMachine
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
-import com.example.places.MainActivity
+import com.example.places.Main.MainActivity
 import com.example.places.PopupMenu.Bio
 import com.example.places.R
-import com.example.places.Trainings
+import com.example.places.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Back : AppCompatActivity() {
@@ -127,7 +127,6 @@ class Back : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
     private fun dispayuser() {
         val newcursor: Cursor? = dbh!!.gettext()
         newArrBack = ArrayList<DatalistBack>()
@@ -142,7 +141,7 @@ class Back : AppCompatActivity() {
                 val intent = Intent(this@Back, EditBackMachine::class.java)
                 intent.putExtra("name", newArrBack[position].name)
                 startActivity(intent)
-                finish()
+                finishActivity(0)
             }
         })
     }

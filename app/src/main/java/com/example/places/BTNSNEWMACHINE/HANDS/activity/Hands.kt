@@ -23,11 +23,11 @@ import com.example.places.BTNSNEWMACHINE.HANDS.delete.EditHandsMachine
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DatalistHands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
-import com.example.places.MainActivity
+import com.example.places.Main.MainActivity
 import com.example.places.BTNSNEWMACHINE.HANDS.adapter.MyAdapterHands
 import com.example.places.R
 import com.example.places.PopupMenu.Bio
-import com.example.places.Trainings
+import com.example.places.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Hands : AppCompatActivity() {
@@ -140,6 +140,7 @@ class Hands : AppCompatActivity() {
                 val intent = Intent(this@Hands, EditHandsMachine::class.java)
                 intent.putExtra("name", newArrHands[position].name)
                 startActivity(intent)
+                finish()
             }
         })
     }

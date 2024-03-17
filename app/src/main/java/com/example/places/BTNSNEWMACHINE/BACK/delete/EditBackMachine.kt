@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.R
+import com.example.places.Trainings.activity.Trainings
 
 class EditBackMachine : AppCompatActivity() {
 
@@ -42,6 +43,13 @@ class EditBackMachine : AppCompatActivity() {
                 Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val intent = Intent(this, Back::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

@@ -5,9 +5,117 @@
     android:layout_gravity="center"
     android:background="@drawable/back_to_dialog"
     android:layout_width="300dp"
-    android:layout_height="200dp">
+    android:layout_height="300dp">
+
+
+    <LinearLayout
+        android:id="@+id/LinearWithDate"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTraining"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddTrainingInDialog">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnUpDay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_up_24"/>
+
+            <TextView
+                android:id="@+id/IdDay"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/baloo_bhai"
+                />
+
+            <Button
+                android:id="@+id/btnDownDay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_down_24"/>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnUpMonth"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_up_24"/>
+
+            <TextView
+                android:id="@+id/IdMonth"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/baloo_bhai"
+                />
+
+            <Button
+                android:id="@+id/btnDownMonth"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_down_24"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnUpYear"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_up_24"/>
+
+            <TextView
+                android:id="@+id/IdYear"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/baloo_bhai"
+                />
+
+            <Button
+                android:id="@+id/btnDownYear"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_arrow_drop_down_24"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <EditText
+        android:layout_marginTop="20dp"
         android:id="@+id/editTextTraining"
         android:layout_width="250dp"
         android:layout_height="50dp"
@@ -18,10 +126,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/LinearWithDate"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnAddTrainingInDialog"
         android:onClick="btnAddTrainingInDialog"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -31,8 +140,9 @@
         android:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTraining"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/LinearWithDate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:layout_width="match_parent"

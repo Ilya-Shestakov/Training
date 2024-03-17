@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
-import com.example.places.MainActivity
+import com.example.places.Main.MainActivity
 import com.example.places.R
 
 class Bio : AppCompatActivity() {
@@ -93,7 +93,7 @@ class Bio : AppCompatActivity() {
     fun btnToBack_Bio(view: View){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish()
+        onPause()
     }
 
 }

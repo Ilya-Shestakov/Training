@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.R
+import com.example.places.Trainings.activity.Trainings
 
 class EditHandsMachine : AppCompatActivity() {
 
@@ -31,21 +32,20 @@ class EditHandsMachine : AppCompatActivity() {
             val names = name.text.toString()
             val deletedata = db.deleteuserdata(names)
 
-            if (deletedata==true){
+            if (deletedata == true) {
                 Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@EditHandsMachine, Hands::class.java)
                 startActivity(intent)
                 finish()
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
-        finishAffinity()
+        val intent = Intent(this, Hands::class.java)
+        startActivity(intent)
+        finish()
     }
-
 }

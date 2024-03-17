@@ -1,4 +1,4 @@
-package com.example.places
+package com.example.places.Trainings.Trainings.DB
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,7 +6,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-import kotlin.coroutines.coroutineContext
 
 class DBHalperTrainings(context: Context): SQLiteOpenHelper(context, "UserdataTrainings", null, 1) {
     override fun onCreate(p0: SQLiteDatabase?) {
@@ -17,10 +16,11 @@ class DBHalperTrainings(context: Context): SQLiteOpenHelper(context, "UserdataTr
         p0?.execSQL("drop table if exists UserdataTrainings")
     }
 
-    fun saveuserdatatrainings(name: String): Boolean {
+    fun saveuserdatatrainings(name: String, date: String): Boolean {
         val p0 = this.writableDatabase
         val cv = ContentValues()
         cv.put("name", name)
+        cv.put("date", date)
         val result = p0.insert("UserdataTrainings", null, cv)
         return result != (-1).toLong()
     }

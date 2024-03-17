@@ -13,14 +13,17 @@
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
         <activity
-            android:name=".EditTraining"
+            android:name=".HalperBtn.AllTrainers"
+            android:exported="false" />
+        <!-- TRAININGS -->
+        <activity
+            android:name=".Trainings.EditTraining.EditTraining"
             android:exported="false"
             android:label="Training"
-            android:parentActivityName=".Trainings"
-            />
+            android:parentActivityName=".Trainings.activity.Trainings" />
         <activity
-            android:name=".Trainings"
-            android:exported="false" />
+            android:name=".Trainings.activity.Trainings"
+            android:exported="false" /> <!-- POPUP MENU -->
         <activity
             android:name=".PopupMenu.Bio"
             android:exported="false" /> <!-- BOSOM -->
@@ -57,7 +60,7 @@
             android:name=".BTNSNEWMACHINE.LEGS.activity.Legs"
             android:exported="false" /> <!-- MAIN -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

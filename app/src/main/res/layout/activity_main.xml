@@ -6,7 +6,7 @@
     android:background="@color/background_btn_Bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,7 +126,7 @@
 
                             android:fontFamily="@font/baloo_bhai"
                             android:gravity="center"
-                            android:text="All machine"
+                            android:text="All trainers"
                             android:textColor="@color/black"
                             android:textSize="30dp" />
 

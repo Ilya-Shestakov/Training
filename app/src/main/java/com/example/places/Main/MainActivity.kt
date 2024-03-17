@@ -1,21 +1,22 @@
-package com.example.places
+package com.example.places.Main
 
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.places.HalperBtn.AllTrainers
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.PopupMenu.Bio
+import com.example.places.R
+import com.example.places.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val btnBack: ConstraintLayout = findViewById(R.id.btnBack)
         val btnTraining: ConstraintLayout = findViewById(R.id.btnTraining)
         val btnBosom: ConstraintLayout = findViewById(R.id.btnBosom)
+        val btnAll: ConstraintLayout = findViewById(R.id.btnAll)
 
 //        btnMore.setOnClickListener { view ->
 //
@@ -77,6 +79,9 @@ class MainActivity : AppCompatActivity() {
         btnHands.setOnClickListener {
             MethodDispHands()
         }
+        btnAll.setOnClickListener {
+            MethodDispAllTrainers()
+        }
         btnBack.setOnClickListener {
             MethodDispBack()
         }
@@ -105,6 +110,12 @@ class MainActivity : AppCompatActivity() {
             true
 
         }
+    }
+
+    private fun MethodDispAllTrainers() {
+        val intent = Intent(this, AllTrainers::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun MethodDispTrainings() {
@@ -154,6 +165,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-
 }

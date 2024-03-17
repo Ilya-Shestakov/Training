@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.R
+import com.example.places.Trainings.activity.Trainings
 
 class EditBosomMachine : AppCompatActivity() {
 
@@ -40,9 +41,10 @@ class EditBosomMachine : AppCompatActivity() {
             }
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
-        finishAffinity()
+        val intent = Intent(this, Bosom::class.java)
+        startActivity(intent)
+        finish()
     }
 }
