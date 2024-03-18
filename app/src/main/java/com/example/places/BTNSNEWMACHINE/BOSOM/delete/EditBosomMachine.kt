@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.R
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 
 class EditBosomMachine : AppCompatActivity() {
 

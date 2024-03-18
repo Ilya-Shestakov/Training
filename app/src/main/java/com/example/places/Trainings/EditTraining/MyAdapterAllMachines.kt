@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.places.R
-import com.example.places.Trainings.Trainings.DB.DatalistTrainings
 
 
 class MyAdapterAllMachines(var userList: ArrayList<DatalistItemTrainer>): RecyclerView.Adapter<MyAdapterAllMachines.MyViewHolder>() {
@@ -34,24 +33,22 @@ class MyAdapterAllMachines(var userList: ArrayList<DatalistItemTrainer>): Recycl
 //    }
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
-        val tname: TextView = itemView.findViewById(R.id.textView)
+        val tname: TextView = itemView.findViewById(R.id.textViewTrainers)
         val tname2: TextView = itemView.findViewById(R.id.textView2)
     }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainer, parent, false)
+        return MyViewHolder(itemView)
+    }
 
+    override fun getItemCount(): Int {
+        return userList.size
+    }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainer, parent, false)
-            return MyViewHolder(itemView)
-        }
-
-        override fun getItemCount(): Int {
-            return userList.size
-        }
-
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            val currentItem = userList[position]
-            holder.tname.text = currentItem.name
-            holder.tname2.text = currentItem.name2
-        }
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val currentItem = userList[position]
+        holder.tname.text = currentItem.name
+        holder.tname2.text = currentItem.name2
+    }
 
 }

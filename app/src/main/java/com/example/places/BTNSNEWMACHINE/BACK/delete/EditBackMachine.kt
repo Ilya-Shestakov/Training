@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.R
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 
 class EditBackMachine : AppCompatActivity() {
 

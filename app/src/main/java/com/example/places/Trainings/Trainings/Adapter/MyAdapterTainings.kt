@@ -12,37 +12,28 @@ import org.w3c.dom.Text
 
 class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerView.Adapter<MyAdapterTainings.MyViewHolder>() {
 
-//    private lateinit var mListener: onItemClickListener
-//    interface onItemClickListener{
-//        fun onItemClick(position: Int)
-//    }
-//    fun OnItemClickListener(listener: onItemClickListener){
-//        mListener = listener
-//    }
+    private lateinit var mListener: onItemClickListener
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+    fun OnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
 
-//    class MyViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
-//    {
-//        val tname: TextView = itemView.findViewById(R.id.textViewName)
-//        var day: TextView = itemView.findViewById(R.id.IdDay)
-//        var month: TextView = itemView.findViewById(R.id.IdMonth)
-//        var year: TextView = itemView.findViewById(R.id.IdYear)
-//        var tdate: String = (day).toString()
-//        init{
-//            itemView.setOnClickListener {
-//                listener.onItemClick(adapterPosition)
-//            }
-//        }
-//    }
-
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    class MyViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
     {
         val tname: TextView = itemView.findViewById(R.id.textViewTrainers)
         val tdate: TextView = itemView.findViewById(R.id.textView2)
+        init{
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainer, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(itemView, mListener)
     }
 
     override fun getItemCount(): Int {

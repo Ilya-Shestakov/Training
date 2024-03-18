@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.R
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 
 class EditLegsMachine : AppCompatActivity() {
 

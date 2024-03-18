@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.R
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 
 class EditHandsMachine : AppCompatActivity() {
 

@@ -27,7 +27,7 @@ import com.example.places.Main.MainActivity
 import com.example.places.BTNSNEWMACHINE.HANDS.adapter.MyAdapterHands
 import com.example.places.R
 import com.example.places.PopupMenu.Bio
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class Hands : AppCompatActivity() {

@@ -16,14 +16,16 @@ class DBHalperTrainings(context: Context): SQLiteOpenHelper(context, "UserdataTr
         p0?.execSQL("drop table if exists UserdataTrainings")
     }
 
+    //ЭТОТ
     fun saveuserdatatrainings(name: String, date: String): Boolean {
         val p0 = this.writableDatabase
         val cv = ContentValues()
         cv.put("name", name)
-        cv.put("date", date)
+        //cv.put("date", date)
         val result = p0.insert("UserdataTrainings", null, cv)
         return result != (-1).toLong()
     }
+    //ДО СЮДА
 
     fun showToast(context: Context) {
         val show = Toast.makeText(context, "12345", Toast.LENGTH_SHORT).show()
@@ -42,8 +44,7 @@ class DBHalperTrainings(context: Context): SQLiteOpenHelper(context, "UserdataTr
 
     fun gettext(): Cursor? {
         val p0 = this.writableDatabase
-        val cursor = p0.rawQuery("select * from UserdataTrainings", null)
-        return cursor
+        return p0.rawQuery("select * from UserdataTrainings", null)
     }
 
 

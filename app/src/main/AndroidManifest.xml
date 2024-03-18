@@ -20,9 +20,9 @@
             android:name=".Trainings.EditTraining.EditTraining"
             android:exported="false"
             android:label="Training"
-            android:parentActivityName=".Trainings.activity.Trainings" />
+            android:parentActivityName=".Trainings.Trainings.activity.Trainings" />
         <activity
-            android:name=".Trainings.activity.Trainings"
+            android:name=".Trainings.Trainings.activity.Trainings"
             android:exported="false" /> <!-- POPUP MENU -->
         <activity
             android:name=".PopupMenu.Bio"

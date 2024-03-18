@@ -1,4 +1,4 @@
-package com.example.places.Trainings.activity
+package com.example.places.Trainings.Trainings.activity
 
 import android.app.Dialog
 import android.content.Intent
@@ -25,6 +25,7 @@ import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
 import com.example.places.PopupMenu.Bio
 import com.example.places.R
+import com.example.places.Trainings.EditTraining.EditTraining
 import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
 import com.example.places.Trainings.Trainings.DB.DatalistTrainings
 import com.example.places.Trainings.Trainings.Adapter.MyAdapterTainings
@@ -34,7 +35,7 @@ class Trainings : AppCompatActivity() {
 
     lateinit var toogle: ActionBarDrawerToggle
     lateinit var dialog: Dialog
-    lateinit var db: DBHalperTrainings
+    var db: DBHalperTrainings = DBHalperTrainings(this)
     private lateinit var newArrTrainings: ArrayList<DatalistTrainings>
     private lateinit var adapter: MyAdapterTainings
     lateinit var recyclerViewTrainings: RecyclerView
@@ -48,8 +49,6 @@ class Trainings : AppCompatActivity() {
         toogle = ActionBarDrawerToggle(this, drawerLayoutTrainings, R.string.open, R.string.close)
         drawerLayoutTrainings.addDrawerListener(toogle)
         toogle.syncState()
-
-        db = DBHalperTrainings(this)
 
         recyclerViewTrainings = findViewById(R.id.recyclerViewTrinings)
 
@@ -141,45 +140,40 @@ class Trainings : AppCompatActivity() {
         val dateDay = dialog.findViewById<TextView>(R.id.IdDay).toString()
         val dateMonth = dialog.findViewById<TextView>(R.id.IdMonth).toString()
         val dateYear = dialog.findViewById<TextView>(R.id.IdYear).toString()
-        val date = "$dateDay : $dateMonth : $dateYear"
+        val date = "00 : 00 : 00"
 
         val savedataTraining = db.saveuserdatatrainings(names, date)
 
         if (TextUtils.isEmpty(names)) {
-            Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
-            dialog.cancel()
+            Toast.makeText(this, "Add trainer's name", Toast.LENGTH_SHORT).show()
         } else {
             if (savedataTraining) {
                 Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show()
-                if (names != "") {
-                    dispayuser()
-                }
+                dispayuser()
                 dialog.cancel()
             } else {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-                dialog.cancel()
+                Toast.makeText(this, "$savedataTraining", Toast.LENGTH_SHORT).show()
             }
         }
     }
-    private fun dispayuser() {
+    fun dispayuser() {
 
         val newcursor: Cursor? = db!!.gettext()
         newArrTrainings = ArrayList<DatalistTrainings>()
         while (newcursor!!.moveToNext()){
             val uname = newcursor.getString(0)
+//            val udate = newcursor.getString(1)
             newArrTrainings.add(DatalistTrainings(uname, "00:00:00"))
         }
         adapter = MyAdapterTainings(newArrTrainings)
         recyclerViewTrainings.adapter = adapter
 
-//        adapter.OnItemClickListener(object: MyAdapterTainings.onItemClickListener {
-//            override fun onItemClick(position: Int) {
-//                val intent = Intent(this@Trainings, EditTraining::class.java)
-//                //intent.putExtra("name", newArrBack[position].name)
-//                startActivity(intent)
-//                finish()
-//            }
-//        })
+        adapter.OnItemClickListener(object: MyAdapterTainings.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                db.deleteuserdata(newArrTrainings[position].name)
+                dispayuser()
 
+            }
+        })
     }
 }

@@ -4,6 +4,10 @@ import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.places.BTNSNEWMACHINE.BACK.DB.DBHalperBack
@@ -11,8 +15,8 @@ import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
 import com.example.places.BTNSNEWMACHINE.HANDS.DB.DBHalperHands
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.R
-import com.example.places.Trainings.Trainings.DB.DatalistTrainings
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 
 class EditTraining : AppCompatActivity() {
 
@@ -21,9 +25,10 @@ class EditTraining : AppCompatActivity() {
     private lateinit var dbHands: DBHalperHands
     private lateinit var dbBack: DBHalperBack
     private lateinit var dbBosom: DBHalperBosom
+    private lateinit var db: DBHalperTrainings
     private lateinit var adapter: MyAdapterAllMachines
     private lateinit var newArrTrainings: ArrayList<DatalistItemTrainer>
-
+    private lateinit var names: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_training)
@@ -32,6 +37,8 @@ class EditTraining : AppCompatActivity() {
         dbHands = DBHalperHands(this)
         dbBack = DBHalperBack(this)
         dbBosom = DBHalperBosom(this)
+
+        db = DBHalperTrainings(this)
 
         MachineInTrainingsRecyclerView = findViewById(R.id.MachineInTrainings)
 

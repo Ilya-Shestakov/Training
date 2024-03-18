@@ -23,7 +23,7 @@ import com.example.places.PopupMenu.Bio
 import com.example.places.R
 import com.example.places.Trainings.EditTraining.DatalistItemTrainer
 import com.example.places.Trainings.EditTraining.MyAdapterAllMachines
-import com.example.places.Trainings.activity.Trainings
+import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
 class AllTrainers : AppCompatActivity() {
@@ -96,14 +96,10 @@ class AllTrainers : AppCompatActivity() {
             val unameBack = newcursorBack.getString(0)
             newArrTrainings.add(DatalistItemTrainer(unameBack, "Back"))
         }
-
-
-
         while (newcursorBosom!!.moveToNext()){
             val unameBosom = newcursorBosom!!.getString(0)
             newArrTrainings.add(DatalistItemTrainer(unameBosom, "Bosom"))
         }
-
         adapter = MyAdapterAllMachines(newArrTrainings)
         recyclerViewTrainers.adapter = adapter
     }
