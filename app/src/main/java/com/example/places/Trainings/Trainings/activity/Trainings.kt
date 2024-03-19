@@ -25,7 +25,6 @@ import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
 import com.example.places.PopupMenu.Bio
 import com.example.places.R
-import com.example.places.Trainings.EditTraining.EditTraining
 import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
 import com.example.places.Trainings.Trainings.DB.DatalistTrainings
 import com.example.places.Trainings.Trainings.Adapter.MyAdapterTainings
@@ -140,9 +139,13 @@ class Trainings : AppCompatActivity() {
         val dateDay = dialog.findViewById<TextView>(R.id.IdDay).toString()
         val dateMonth = dialog.findViewById<TextView>(R.id.IdMonth).toString()
         val dateYear = dialog.findViewById<TextView>(R.id.IdYear).toString()
-        val date = "00 : 00 : 00"
+        val date = "000000"
 
-        val savedataTraining = db.saveuserdatatrainings(names, date)
+
+        //
+        val savedataTraining = db.saveuserdata(names, date)
+        //
+
 
         if (TextUtils.isEmpty(names)) {
             Toast.makeText(this, "Add trainer's name", Toast.LENGTH_SHORT).show()
@@ -157,7 +160,6 @@ class Trainings : AppCompatActivity() {
         }
     }
     fun dispayuser() {
-
         val newcursor: Cursor? = db!!.gettext()
         newArrTrainings = ArrayList<DatalistTrainings>()
         while (newcursor!!.moveToNext()){
@@ -172,7 +174,6 @@ class Trainings : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 db.deleteuserdata(newArrTrainings[position].name)
                 dispayuser()
-
             }
         })
     }

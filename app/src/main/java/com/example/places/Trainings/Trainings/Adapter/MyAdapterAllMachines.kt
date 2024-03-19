@@ -1,4 +1,4 @@
-package com.example.places.Trainings.EditTraining
+package com.example.places.Trainings.Trainings.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
