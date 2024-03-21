@@ -21,8 +21,6 @@ import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
 import com.example.places.PopupMenu.Bio
 import com.example.places.R
-import com.example.places.Trainings.Trainings.Adapter.DatalistItemTrainer
-import com.example.places.Trainings.Trainings.Adapter.MyAdapterAllMachines
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 

@@ -1,4 +1,4 @@
-package com.example.places.Trainings.Trainings.Adapter
+package com.example.places.HalperBtn
 
 import android.view.LayoutInflater
 import android.view.View

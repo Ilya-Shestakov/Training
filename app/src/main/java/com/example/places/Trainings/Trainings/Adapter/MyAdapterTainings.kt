@@ -22,8 +22,8 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
 
     class MyViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
     {
-        val tname: TextView = itemView.findViewById(R.id.textViewTrainers)
-        val tdate: TextView = itemView.findViewById(R.id.textView2)
+        val tname: TextView = itemView.findViewById(R.id.textViewName)
+        val tdate: TextView = itemView.findViewById(R.id.textViewDate)
         init{
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
@@ -32,7 +32,7 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainer, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainings, parent, false)
         return MyViewHolder(itemView, mListener)
     }
 
