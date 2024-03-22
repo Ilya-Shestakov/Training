@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 
 class DBHalperLegs(context: Context): SQLiteOpenHelper(context, "UserdataLegs", null, 1) {
     override fun onCreate(p0: SQLiteDatabase?) {
@@ -25,12 +26,16 @@ class DBHalperLegs(context: Context): SQLiteOpenHelper(context, "UserdataLegs", 
 
     fun deleteuserdata(name: String): Boolean {
         val p0 = this.writableDatabase
-        val cursor: Cursor = p0.rawQuery("select * from Userdata where name=?", arrayOf(name))
+        val cursor: Cursor = p0.rawQuery("select * from UserdataLegs where name=?", arrayOf(name))
         if (cursor.count>0) {
             val result = p0.delete("UserdataLegs", "name=?", arrayOf(name))
             return result != -1
         }
         return false
+    }
+
+    fun showTo(context: Context){
+        Toast.makeText(context, "True", Toast.LENGTH_SHORT).show()
     }
 
     fun gettext(): Cursor? {

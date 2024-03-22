@@ -24,7 +24,7 @@ import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
-import com.example.places.PopupMenu.Bio
+import com.example.places.HalperBtn.Bio
 import com.example.places.R
 import com.example.places.Trainings.Trainings.DB.DatalistTrainings
 import com.example.places.Trainings.Trainings.Adapter.MyAdapterTainings

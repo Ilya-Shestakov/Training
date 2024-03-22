@@ -26,20 +26,20 @@ class EditLegsMachine : AppCompatActivity() {
 
         name.setText(intent.getStringExtra("name"))
 
-        del.setOnClickListener {
-            val names = name.text.toString()
-            val deletedata = db.deleteuserdata(names)
-
-            if (deletedata==true){
-                Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditLegsMachine, Legs::class.java)
-                startActivity(intent)
-                finish()
-            }
-            else{
-                Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        del.setOnClickListener {
+//            val names = name.text.toString()
+//            val deletedata = db.deleteuserdata(names)
+//
+//            if (deletedata==true){
+//                Toast.makeText(this, "Delete contact", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(this@EditLegsMachine, Legs::class.java)
+//                startActivity(intent)
+//                finish()
+//            }
+//            else{
+//                Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
     override fun onDestroy() {
         super.onDestroy()

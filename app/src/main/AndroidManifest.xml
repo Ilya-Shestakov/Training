@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
         <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
             android:name=".QuestionDelete"
             android:exported="false" />
         <activity
@@ -30,7 +33,7 @@
             android:name=".Trainings.Trainings.activity.Trainings"
             android:exported="false" /> <!-- POPUP MENU -->
         <activity
-            android:name=".PopupMenu.Bio"
+            android:name=".HalperBtn.Bio"
             android:exported="false" /> <!-- BOSOM -->
         <activity
             android:name=".BTNSNEWMACHINE.BOSOM.delete.EditBosomMachine"

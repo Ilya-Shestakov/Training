@@ -26,7 +26,8 @@ import com.example.places.BTNSNEWMACHINE.LEGS.adapters.MyAdapterLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.delete.EditLegsMachine
 import com.example.places.Main.MainActivity
 import com.example.places.R
-import com.example.places.PopupMenu.Bio
+import com.example.places.HalperBtn.Bio
+import com.example.places.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -96,7 +97,7 @@ class Legs : AppCompatActivity() {
     }
 
     fun btnToBack(view: View){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Settings::class.java)
         startActivity(intent)
         finish()
     }
@@ -136,10 +137,8 @@ class Legs : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.OnItemClickListener(object : MyAdapterLegs.onItemClickListener {
             override fun onItemClick(position: Int) {
-                val intent = Intent(this@Legs, EditLegsMachine::class.java)
-                intent.putExtra("name", newArry[position].name)
-                startActivity(intent)
-                finish()
+                dbh.deleteuserdata(newArry[position].name)
+                dispayuser()
             }
         })
     }

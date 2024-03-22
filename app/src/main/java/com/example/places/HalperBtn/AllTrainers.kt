@@ -19,8 +19,8 @@ import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
-import com.example.places.PopupMenu.Bio
 import com.example.places.R
+import com.example.places.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -151,7 +151,7 @@ class AllTrainers : AppCompatActivity() {
     }
 
     fun btnToBack(view: View){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Settings::class.java)
         startActivity(intent)
         finish()
     }

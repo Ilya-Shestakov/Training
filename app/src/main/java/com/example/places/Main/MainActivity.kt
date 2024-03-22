@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,8 +15,9 @@ import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
-import com.example.places.PopupMenu.Bio
+import com.example.places.HalperBtn.Bio
 import com.example.places.R
+import com.example.places.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -31,12 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navVoid: NavigationView = findViewById(R.id.navView)
-        val btnLegs: ConstraintLayout = findViewById(R.id.btnLegs)
-        val btnHands: ConstraintLayout = findViewById(R.id.btnHands)
-        val btnBack: ConstraintLayout = findViewById(R.id.btnBack)
+        val btnRecycler: ConstraintLayout = findViewById(R.id.btnRecycler)
+        val btnSettings: ConstraintLayout = findViewById(R.id.btnSettings)
         val btnTraining: ConstraintLayout = findViewById(R.id.btnTraining)
-        val btnBosom: ConstraintLayout = findViewById(R.id.btnBosom)
-        val btnAll: ConstraintLayout = findViewById(R.id.btnAll)
 
 //        btnMore.setOnClickListener { view ->
 //
@@ -70,23 +69,34 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
-        btnLegs.setOnClickListener {
-            MethodDispLegs()
+//        btnLegs.setOnClickListener {
+//            MethodDispLegs()
+//        }
+//        btnTraining.setOnClickListener {
+//            MethodDispTrainings()
+//        }
+
+//        btnHands.setOnClickListener {
+//            MethodDispHands()
+//        }
+//        btnAll.setOnClickListener {
+//            MethodDispAllTrainers()
+//        }
+//        btnBack.setOnClickListener {
+//            MethodDispBack()
+//        }
+//        btnBosom.setOnClickListener {
+//            MethodDispBosom()
+//        }
+
+        btnRecycler.setOnClickListener {
+            Toast.makeText(this, "Trainings all", Toast.LENGTH_SHORT).show()
         }
         btnTraining.setOnClickListener {
             MethodDispTrainings()
         }
-        btnHands.setOnClickListener {
-            MethodDispHands()
-        }
-        btnAll.setOnClickListener {
-            MethodDispAllTrainers()
-        }
-        btnBack.setOnClickListener {
-            MethodDispBack()
-        }
-        btnBosom.setOnClickListener {
-            MethodDispBosom()
+        btnSettings.setOnClickListener{
+            MethodDispSettings()
         }
 
         toogle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -112,14 +122,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun MethodDispAllTrainers() {
-        val intent = Intent(this, AllTrainers::class.java)
+    private fun MethodDispTrainings() {
+        val intent = Intent(this, Trainings::class.java)
         startActivity(intent)
         finish()
     }
 
-    private fun MethodDispTrainings() {
-        val intent = Intent(this, Trainings::class.java)
+    private fun MethodDispSettings() {
+        val intent = Intent(this, Settings::class.java)
         startActivity(intent)
         finish()
     }

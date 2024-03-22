@@ -46,6 +46,7 @@
 
             app:layout_constraintTop_toBottomOf="@+id/topBlockTrainers"
             android:layout_marginTop="200dp"
+            android:layout_marginBottom="75dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
@@ -58,6 +59,24 @@
                 android:paddingBottom="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:onClick="btnToBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/RecyclerViewBlock"
+            app:layout_constraintStart_toStartOf="@+id/RecyclerViewBlock"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-40dp"
+            android:background="@drawable/shadow_and_border"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_keyboard_backspace_24"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

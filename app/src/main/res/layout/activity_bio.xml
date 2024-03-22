@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/desine_top_block"
     android:layout_gravity="center"
-    tools:context=".PopupMenu.Bio">
+    tools:context=".HalperBtn.Bio">
 
     <TextView
         android:id="@+id/TitleUInfe"

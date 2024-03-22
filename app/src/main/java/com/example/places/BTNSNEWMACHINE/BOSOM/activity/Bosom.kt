@@ -26,7 +26,8 @@ import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
 import com.example.places.R
-import com.example.places.PopupMenu.Bio
+import com.example.places.HalperBtn.Bio
+import com.example.places.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -108,7 +109,7 @@ class Bosom : AppCompatActivity() {
     }
 
     fun btnToBosom(view: View){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Settings::class.java)
         startActivity(intent)
         finish()
     }
@@ -136,10 +137,8 @@ class Bosom : AppCompatActivity() {
         recyclerViewBosom.adapter = adapter
         adapter.OnItemClickListener(object: MyAdapterBosom.onItemClickListener {
             override fun onItemClick(position: Int) {
-                val intent = Intent(this@Bosom, EditBosomMachine::class.java)
-                intent.putExtra("name", newArrBosom[position].name)
-                startActivity(intent)
-                finish()
+                dbh.deleteuserdata(newArrBosom[position].name)
+                dispayuser()
             }
         })
     }
