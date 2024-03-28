@@ -19,8 +19,8 @@ import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.DB.DBHalperLegs
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
+import com.example.places.NewTraining.activity.NewTraining
 import com.example.places.R
-import com.example.places.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -65,6 +65,8 @@ class AllTrainers : AppCompatActivity() {
                 R.id.nav_hands -> MethodDispHands()
                 R.id.nav_back -> MethodDispBack()
                 R.id.nav_bosom -> MethodDispBosom()
+                R.id.nav_newTraining -> MethodDispNewTraining()
+                R.id.nav_settings -> MethodDispSettings()
                 R.id.nav_exit -> finishAffinity()
             }
             true
@@ -74,6 +76,18 @@ class AllTrainers : AppCompatActivity() {
         recyclerViewTrainers.setHasFixedSize(true)
         dispayuserAll()
 
+    }
+
+    private fun MethodDispSettings() {
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun MethodDispNewTraining() {
+        val intent = Intent(this, NewTraining::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun dispayuserAll() {

@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Places"
         tools:targetApi="31">
         <activity
-            android:name=".Settings"
+            android:name=".NewTraining.activity.NewTraining"
             android:exported="false" />
         <activity
-            android:name=".QuestionDelete"
+            android:name=".HalperBtn.Settings"
+            android:exported="false" />
+        <activity
+            android:name=".HalperBtn.QuestionDelete"
             android:exported="false" />
         <activity
             android:name=".Trainings.Trainings.Bucket"

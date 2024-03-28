@@ -73,7 +73,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btnRecycler"
+                android:id="@+id/btnList"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"

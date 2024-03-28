@@ -1,16 +1,14 @@
-package com.example.places.Trainings.Trainings.Adapter
+package com.example.places.NewTraining.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.places.NewTraining.DB.DatalistNewAttitude
 import com.example.places.R
-import com.example.places.Trainings.Trainings.DB.DatalistTrainings
-import org.w3c.dom.Text
 
-
-class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerView.Adapter<MyAdapterTainings.MyViewHolder>() {
+class MyAdapterNewTraining(var userList: ArrayList<DatalistNewAttitude>): RecyclerView.Adapter<MyAdapterNewTraining.MyViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
     interface onItemClickListener{
@@ -19,21 +17,21 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
     fun OnItemClickListener(listener: onItemClickListener){
         mListener = listener
     }
-
     class MyViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
     {
-        val tname: TextView = itemView.findViewById(R.id.textViewName)
-        val tdate: TextView = itemView.findViewById(R.id.textViewDate)
-        val tweight: TextView = itemView.findViewById(R.id.textViewWeight)
+        val tNameAttitude: TextView = itemView.findViewById(R.id.textViewNameAttitude)
+        val tWeightAttitude: TextView = itemView.findViewById(R.id.textViewWeightAttitude)
+        val textViewTypeAttitude: TextView = itemView.findViewById(R.id.textViewTypeAttitude)
         init{
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_trainings, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_attitude, parent, false)
         return MyViewHolder(itemView, mListener)
     }
 
@@ -43,9 +41,9 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
-        holder.tname.text = currentItem.name
-        holder.tdate.text = currentItem.date
-        holder.tweight.text = currentItem.weight
+        holder.tNameAttitude.text = currentItem.name
+        holder.tWeightAttitude.text = currentItem.weight
+        holder.textViewTypeAttitude.text = currentItem.type
     }
 
 }

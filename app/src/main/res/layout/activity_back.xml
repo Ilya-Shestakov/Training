@@ -15,25 +15,6 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:onClick="btnAddMachineToBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/RecyclerViewBlock"
-            app:layout_constraintEnd_toEndOf="@+id/RecyclerViewBlock"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="-40dp"
-            android:background="@drawable/shadow_and_border"
-            >
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/baseline_add_24"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:onClick="btnToBack"
             android:layout_width="50dp"
             android:layout_height="50dp"

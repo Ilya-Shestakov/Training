@@ -20,14 +20,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DBHalperBosom
 import com.example.places.BTNSNEWMACHINE.BOSOM.DB.DatalistBosom
-import com.example.places.BTNSNEWMACHINE.BOSOM.delete.EditBosomMachine
 import com.example.places.BTNSNEWMACHINE.BOSOM.adapter.MyAdapterBosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.Main.MainActivity
 import com.example.places.R
 import com.example.places.HalperBtn.Bio
-import com.example.places.Settings
+import com.example.places.NewTraining.activity.NewTraining
+import com.example.places.HalperBtn.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -73,10 +73,24 @@ class Bosom : AppCompatActivity() {
                 R.id.nav_hands -> MethodDispHands()
                 R.id.nav_back -> MethodDispBack()
                 R.id.nav_bosom -> MethodDispBosom()
+                R.id.nav_newTraining -> MethodDispNewTraining()
+                R.id.nav_settings -> MethodDispSettings()
                 R.id.nav_exit -> finishAffinity()
             }
             true
         }
+    }
+
+    private fun MethodDispSettings() {
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun MethodDispNewTraining() {
+        val intent = Intent(this, NewTraining::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun MethodDispTrainings() {
@@ -142,41 +156,6 @@ class Bosom : AppCompatActivity() {
             }
         })
     }
-
-    //Btn start Dialog
-    fun btnAddMachineToBosom(view: View){
-        dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_new_machine)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
-    }
-
-    //Btn in Dialog
-    fun btnAddLegsMachine(view: View){
-
-        var name = dialog.findViewById<EditText>(R.id.editText)
-
-        val names = name.text.toString().trim()
-        val savedata = db.saveuserdata(names)
-        if (TextUtils.isEmpty(names)){
-            Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
-            dialog.cancel()
-        }
-        else {
-            if (savedata == true) {
-                Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show()
-                if (names != ""){
-                    dispayuser()
-                }
-                dialog.cancel()
-            } else {
-                Toast.makeText(this, "Exist", Toast.LENGTH_SHORT).show()
-                dialog.cancel()
-            }
-        }
-    }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toogle.onOptionsItemSelected(item)) {

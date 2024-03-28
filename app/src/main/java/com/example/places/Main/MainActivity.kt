@@ -6,18 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.places.HalperBtn.AllTrainers
 import com.example.places.BTNSNEWMACHINE.BACK.activity.Back
 import com.example.places.BTNSNEWMACHINE.BOSOM.activity.Bosom
 import com.example.places.BTNSNEWMACHINE.HANDS.activity.Hands
 import com.example.places.BTNSNEWMACHINE.LEGS.activity.Legs
 import com.example.places.HalperBtn.Bio
+import com.example.places.NewTraining.activity.NewTraining
 import com.example.places.R
-import com.example.places.Settings
+import com.example.places.HalperBtn.Settings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navVoid: NavigationView = findViewById(R.id.navView)
-        val btnRecycler: ConstraintLayout = findViewById(R.id.btnRecycler)
+        val btnList: ConstraintLayout = findViewById(R.id.btnList)
         val btnSettings: ConstraintLayout = findViewById(R.id.btnSettings)
         val btnTraining: ConstraintLayout = findViewById(R.id.btnTraining)
 
@@ -89,11 +88,11 @@ class MainActivity : AppCompatActivity() {
 //            MethodDispBosom()
 //        }
 
-        btnRecycler.setOnClickListener {
-            Toast.makeText(this, "Trainings all", Toast.LENGTH_SHORT).show()
+        btnList.setOnClickListener {
+            MethodDispTrainings()
         }
         btnTraining.setOnClickListener {
-            MethodDispTrainings()
+            MethodDispNewTraining()
         }
         btnSettings.setOnClickListener{
             MethodDispSettings()
@@ -115,6 +114,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_hands -> MethodDispHands()
                 R.id.nav_back -> MethodDispBack()
                 R.id.nav_bosom -> MethodDispBosom()
+                R.id.nav_newTraining -> MethodDispNewTraining()
+                R.id.nav_settings -> MethodDispSettings()
                 R.id.nav_exit -> finishAffinity()
             }
             true
@@ -130,6 +131,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun MethodDispSettings() {
         val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun MethodDispNewTraining() {
+        val intent = Intent(this, NewTraining::class.java)
         startActivity(intent)
         finish()
     }

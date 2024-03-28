@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@drawable/back_to_dialog">
+
+    <TextView
+        android:id="@+id/editTextTypeDialog"
+        android:onClick="methodeditTextTypeDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo_bhai"
+        android:text=""
+        android:hint="Type"
+        android:textColor="@color/gray"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameDialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <EditText
+        android:id="@+id/editTextNameDialog"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:hint="Name..."
+        android:orientation="horizontal"
+        android:paddingBottom="2dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCountDialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTypeDialog" />
+
+    <EditText
+        android:id="@+id/editTextWeightDialog"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:hint="Weight..."
+        android:inputType="number"
+        android:paddingBottom="2dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:maxLength="4"
+
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddAttitude"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNameDialog"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameDialog" />
+
+    <EditText
+        android:id="@+id/editTextCountDialog"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:hint="Count..."
+        android:inputType="number"
+        android:paddingBottom="2dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+
+        android:maxLength="2"
+
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddAttitude"
+        app:layout_constraintStart_toStartOf="@+id/editTextNameDialog"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameDialog" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnAddAttitude"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/desine_small_btns"
+
+        android:backgroundTint="@null"
+        android:onClick="btnAddAttitude"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Add"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

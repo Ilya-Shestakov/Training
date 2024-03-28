@@ -4,16 +4,20 @@
     tools:showIn="navigation_view"
     >
     <item
+        android:id="@+id/nav_menu"
+        android:title="Menu">
+    </item>
+    <item
         android:id="@+id/nav_bio"
         android:title="You Bio">
     </item>
     <item
-        android:id="@+id/nav_training"
-        android:title="Training">
+        android:id="@+id/nav_newTraining"
+        android:title="New trainings">
     </item>
     <item
-        android:id="@+id/nav_menu"
-        android:title="Menu">
+        android:id="@+id/nav_training"
+        android:title="Training">
     </item>
     <item
         android:id="@+id/nav_legs"
@@ -30,6 +34,10 @@
     <item
         android:id="@+id/nav_bosom"
         android:title="Bosom">
+    </item>
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings">
     </item>
     <item
         android:id="@+id/nav_exit"

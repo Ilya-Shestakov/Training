@@ -93,7 +93,7 @@ class Bio : AppCompatActivity() {
     fun btnToBack_Bio(view: View){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        onPause()
+        finish()
     }
 
 }
