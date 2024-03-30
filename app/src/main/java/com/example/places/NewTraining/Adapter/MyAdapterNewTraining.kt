@@ -10,6 +10,7 @@ import com.example.places.R
 
 class MyAdapterNewTraining(var userList: ArrayList<DatalistNewAttitude>): RecyclerView.Adapter<MyAdapterNewTraining.MyViewHolder>() {
 
+
     private lateinit var mListener: onItemClickListener
     interface onItemClickListener{
         fun onItemClick(position: Int)

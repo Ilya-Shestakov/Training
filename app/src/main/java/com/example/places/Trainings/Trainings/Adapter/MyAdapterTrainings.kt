@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.places.NewTraining.Adapter.MyAdapterNewTraining
+import com.example.places.NewTraining.DB.DatalistNewAttitude
 import com.example.places.R
-import com.example.places.Trainings.Trainings.DB.DatalistTrainings
-import org.w3c.dom.Text
+import com.example.places.Trainings.Trainings.DB.DatalistTraining
 
-
-class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerView.Adapter<MyAdapterTainings.MyViewHolder>() {
+class MyAdapterTrainings(var userList: ArrayList<DatalistTraining>): RecyclerView.Adapter<MyAdapterTrainings.MyViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
     interface onItemClickListener{
@@ -19,12 +19,11 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
     fun OnItemClickListener(listener: onItemClickListener){
         mListener = listener
     }
-
     class MyViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
     {
-        val tname: TextView = itemView.findViewById(R.id.textViewName)
-        val tdate: TextView = itemView.findViewById(R.id.textViewDate)
-        val tweight: TextView = itemView.findViewById(R.id.textViewWeight)
+        val textViewName: TextView = itemView.findViewById(R.id.textViewName)
+        val textViewWeight: TextView = itemView.findViewById(R.id.textViewWeight)
+        val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
         init{
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
@@ -43,9 +42,9 @@ class MyAdapterTainings(var userList: ArrayList<DatalistTrainings>): RecyclerVie
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
-        holder.tname.text = currentItem.name
-        holder.tdate.text = currentItem.date
-        holder.tweight.text = currentItem.weight
+        holder.textViewName.text = currentItem.name
+        holder.textViewWeight.text = currentItem.weight
+        holder.textViewDate.text = currentItem.date
     }
 
 }

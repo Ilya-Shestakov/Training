@@ -10,12 +10,10 @@ import android.text.BoringLayout
 class DBHalperNewTraining(context: Context): SQLiteOpenHelper(context, "UserdataAttitude", null, 1) {
     override fun onCreate(p0: SQLiteDatabase?) {
         p0?.execSQL("create table UserdataAttitude (name TEXT, weight TEXT, type TEXT)")
-        p0?.execSQL("create table UserdataWeight (weight TEXT)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("drop table if exists UserdataAttitude")
-        db?.execSQL("drop table if exists UserdataWeight")
     }
 
     fun saveuserdata(name: String, weight: String, type: String): Boolean {
@@ -36,29 +34,13 @@ class DBHalperNewTraining(context: Context): SQLiteOpenHelper(context, "Userdata
         return false
     }
 
-//    fun deleteuserdataName(name: String): Boolean {
-//        val p0 = this.writableDatabase
-//        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where name=?", arrayOf(name))
-//        val result = p0.delete("UserdataAttitude", "name=?", arrayOf(name))
-//        return result != -1
-//        return false
-//    }
-//
-//    fun deleteuserdataDate(date: String): Boolean {
-//        val p0 = this.writableDatabase
-//        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where date=?", arrayOf(date))
-//        val result = p0.delete("UserdataAttitude", "date=?", arrayOf(date))
-//        return result != -1
-//        return false
-//    }
-//
-//    fun deleteuserdataWeight(weight: String): Boolean {
-//        val p0 = this.writableDatabase
-//        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where weight=?", arrayOf(weight))
-//        val result = p0.delete("UserdataAttitude", "weight=?", arrayOf(weight))
-//        return result != -1
-//        return false
-//    }
+    fun deleteAllData(type: String): Boolean {
+        val p0 = this.writableDatabase
+        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where type=?", arrayOf(type))
+            val result = p0.delete("UserdataAttitude", "type=?", arrayOf(type))
+            return result != -1
+        return false
+    }
 
     fun gettext(): Cursor? {
         val p0 = this.writableDatabase

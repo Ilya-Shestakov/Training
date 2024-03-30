@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,7 @@ import com.example.places.HalperBtn.Settings
 import com.example.places.NewTraining.Adapter.MyAdapterNewTraining
 import com.example.places.NewTraining.DB.DBHalperNewTraining
 import com.example.places.NewTraining.DB.DatalistNewAttitude
-import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
+import com.example.places.Trainings.Trainings.DB.DBTrainings
 import com.example.places.Trainings.Trainings.activity.Trainings
 import com.google.android.material.navigation.NavigationView
 import java.text.SimpleDateFormat
@@ -44,7 +45,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     lateinit var toogle: ActionBarDrawerToggle
     lateinit var db: DBHalperNewTraining
-    lateinit var dbSave: DBHalperTrainings
+    lateinit var dbSave: DBTrainings
     lateinit var dbL: DBHalperLegs
     lateinit var dbH: DBHalperHands
     lateinit var dbB: DBHalperBack
@@ -62,7 +63,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         val navVoid: NavigationView = findViewById(R.id.navView)
 
         db = DBHalperNewTraining(this)
-        dbSave = DBHalperTrainings(this)
+        dbSave = DBTrainings(this)
         dbL = DBHalperLegs(this)
         dbH = DBHalperHands(this)
         dbB = DBHalperBack(this)
@@ -81,11 +82,15 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
+
         var titleDate: TextView = findViewById(R.id.TitleDate)
         var date = Date()
         var s = SimpleDateFormat("dd/MM/yyyy")
         var dateStr: String = s.format(date)
         titleDate.setText(dateStr)
+
+
 
         navVoid.setNavigationItemSelectedListener {
             when(it.itemId)
@@ -163,6 +168,34 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
 
 
+    //                            EDITS
+
+
+
+
+
+    fun methodEditName(view: View){
+
+        dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.edit_training_name_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+
+    }
+
+
+    fun methodEditDate(view: View){
+        dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.edit_training_date_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+    }
+
+
+
+
 
 
     //                              Save data
@@ -207,12 +240,6 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             var summEdits: String = notNeeed.toString()
 
             db.saveuserdata(editTextNameDialog, summEdits, editTextTypeDialog)
-//
-//            val cursorWeight: Cursor? = db.getweight()
-//            val weightIt = cursorWeight?.getString(0)
-
-//            db.savedataWeight(editTextWeightDialog)
-
             dialog.cancel()
 
             dispayuser()
@@ -227,26 +254,8 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     //                              DISPLAY
 
 
-    private var countWeight = 0
-    private var countWeight2 = 0
-
-//                                   SAVE
-
-    fun methodSaveTraining(view: View){
-
-        val TitleDate = findViewById<TextView>(R.id.TitleDate).text
-        val TitleName = findViewById<TextView>(R.id.TitleName).text
-
-        dbSave.saveuserdata(TitleName.toString(), countWeight.toString(), TitleDate.toString())
-
-        countWeight2 = 0
-        countWeight = 0
-
-        val intent = Intent(this@NewTraining, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-
-    }
+    var countWeight = 0
+    var countWeight2 = 0
 
 
     fun dispayuser() {
@@ -270,7 +279,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         adapter.OnItemClickListener(object: MyAdapterNewTraining.onItemClickListener {
             override fun onItemClick(position: Int) {
 
-                Toast.makeText(this@NewTraining, "$countWeight", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@NewTraining, "$countWeight", Toast.LENGTH_SHORT).show()
 
                 dialog = Dialog(this@NewTraining)
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -278,8 +287,8 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
 
-                val btnYes: Button = dialog.findViewById(R.id.btnCopy)
-                val btnNo: Button = dialog.findViewById(R.id.btnDelete)
+                val btnYes: ConstraintLayout = dialog.findViewById(R.id.btnCopy)
+                val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnDelete)
 
                 btnYes.setOnClickListener {
                     db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].type)
@@ -288,26 +297,49 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 }
                 btnNo.setOnClickListener {
                     db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].type)
+                    countWeight -= newArrayAttitude[position].weight.toInt()
                     dispayuser()
                     dialog.cancel()
-//                    countWeight -= newArrayAttitude[position].weight.toInt()
                 }
             }
         })
     }
 
 
+    fun methodSaveTraining(view: View){
+
+        val TitleDate = findViewById<TextView>(R.id.TitleDate).text
+        val TitleName = findViewById<TextView>(R.id.TitleName).text
+
+        dbSave.savedatatrainings(TitleName.toString(), countWeight.toString(), TitleDate.toString())
+
+        db.deleteAllData("Legs")
+        db.deleteAllData("Hands")
+        db.deleteAllData("Back")
+        db.deleteAllData("Bosom")
+        db.deleteAllData("Other")
+
+        countWeight2 = 0
+        countWeight = 0
+
+        val intent = Intent(this@NewTraining, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+
+    }
+
     fun btnCheckName(view: View){
         var titleName: TextView = findViewById(R.id.TitleName)
-        var editName: EditText = findViewById(R.id.editTextNewTrainings)
+        var editName: EditText = dialog.findViewById(R.id.editTextNewTrainings)
         titleName.setText(editName.text)
+        dialog.cancel()
     }
     fun btnCheckDate(view: View){
         var titleDate: TextView = findViewById(R.id.TitleDate)
 
-        var dateDay = findViewById<TextView?>(R.id.IdDay).text
-        var dateMonth = findViewById<TextView?>(R.id.IdMonth).text
-        var dateYear = findViewById<TextView?>(R.id.IdYear).text
+        var dateDay = dialog.findViewById<TextView?>(R.id.IdDay).text
+        var dateMonth = dialog.findViewById<TextView?>(R.id.IdMonth).text
+        var dateYear = dialog.findViewById<TextView?>(R.id.IdYear).text
 
         var date = ""
 
@@ -328,6 +360,8 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             }
         }
         titleDate.setText(date)
+
+        dialog.cancel()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -390,6 +424,11 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         finish()
     }
 
+    fun btnToBackInTraining(view: View){
+        val intent = Intent(this@NewTraining, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 
     var countDay = 0

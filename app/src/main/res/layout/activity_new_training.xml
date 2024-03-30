@@ -26,8 +26,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
+
                 <TextView
                     android:id="@+id/TitleName"
+
+                    android:onClick="methodEditName"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
@@ -48,6 +51,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
 
+                android:onClick="methodEditDate"
+
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo_bhai"
                 android:gravity="center"
@@ -62,207 +67,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnCheckName"
-            android:onClick="btnCheckName"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextNewTrainings"
-            app:layout_constraintTop_toTopOf="@+id/editTextNewTrainings"
-            app:layout_constraintStart_toEndOf="@+id/editTextNewTrainings"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/shadow_and_border"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/baseline_check_24"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <EditText
-            android:id="@+id/editTextNewTrainings"
-            android:autoHandwritingEnabled="true"
-            android:orientation="horizontal"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/topBlockNewTraining"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="10dp"
-            android:maxLength="200"
-            android:layout_marginStart="50dp"
-            android:hint="Name..."
-            android:textColorHint="@color/gray"
-            android:textColor="@color/black"
-            android:fontFamily="@font/baloo_bhai"
-            android:paddingBottom="2dp"
-            />
-
-        <TextView
-            android:id="@+id/textName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name: "
-            android:fontFamily="@font/baloo_bhai"
-            android:textColor="@color/black"
-            android:textSize="23dp"
-            app:layout_constraintTop_toTopOf="@+id/editTextNewTrainings"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextNewTrainings"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNewTrainings"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date: "
-            android:fontFamily="@font/baloo_bhai"
-            android:textColor="@color/black"
-            android:textSize="23dp"
-            app:layout_constraintTop_toTopOf="@+id/LinearWithDate"
-            app:layout_constraintBottom_toBottomOf="@+id/LinearWithDate"
-            app:layout_constraintStart_toStartOf="@id/textName"
-            />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnCheckDate"
-            android:onClick="btnCheckDate"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/LinearWithDate"
-            app:layout_constraintTop_toTopOf="@+id/LinearWithDate"
-            app:layout_constraintStart_toStartOf="@+id/btnCheckName"
-            app:layout_constraintEnd_toEndOf="@+id/btnCheckName"
-            android:background="@drawable/shadow_and_border"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/baseline_check_24"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearWithDate"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-
-            app:layout_constraintStart_toStartOf="@id/editTextNewTrainings"
-            app:layout_constraintEnd_toEndOf="@+id/editTextNewTrainings"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNewTrainings"
-            android:layout_marginTop="20dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnUpDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnUpDay"
-                    android:background="@drawable/baseline_arrow_drop_up_24"/>
-
-                <TextView
-                    android:id="@+id/IdDay"
-                    android:layout_width="35dp"
-                    android:gravity="center"
-                    android:maxLength="2"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/baloo_bhai"
-                    />
-
-                <Button
-                    android:id="@+id/btnDownDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnDownDay"
-                    android:background="@drawable/baseline_arrow_drop_down_24"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginStart="20dp"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnUpMonth"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnUpMonth"
-                    android:background="@drawable/baseline_arrow_drop_up_24"/>
-
-                <TextView
-                    android:id="@+id/IdMonth"
-                    android:layout_width="30dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/baloo_bhai"
-                    />
-
-                <Button
-                    android:id="@+id/btnDownMonth"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnDownMonth"
-                    android:background="@drawable/baseline_arrow_drop_down_24"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnUpYear"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnUpYear"
-                    android:background="@drawable/baseline_arrow_drop_up_24"/>
-
-                <TextView
-                    android:id="@+id/IdYear"
-                    android:layout_width="35dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="30dp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/baloo_bhai"
-                    />
-
-                <Button
-                    android:id="@+id/btnDownYear"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="btnDownYear"
-                    android:background="@drawable/baseline_arrow_drop_down_24"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewAttitude"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/LinearWithDate"
+            app:layout_constraintTop_toBottomOf="@+id/topBlockNewTraining"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="50dp"
             />
@@ -282,6 +91,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/baseline_add_24"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:onClick="btnToBackInTraining"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerViewAttitude"
+            app:layout_constraintStart_toStartOf="@+id/recyclerViewAttitude"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shadow_and_border"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_keyboard_backspace_24"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

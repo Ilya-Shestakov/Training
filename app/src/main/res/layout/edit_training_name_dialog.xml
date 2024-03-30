@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="260dp"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@drawable/back_to_dialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnCheckName"
+        android:onClick="btnCheckName"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNewTrainings"
+        app:layout_constraintStart_toStartOf="@+id/editTextNewTrainings"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNewTrainings"
+        android:background="@drawable/shadow_and_border"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_check_24"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/editTextNewTrainings"
+        android:orientation="horizontal"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Name..."
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:fontFamily="@font/baloo_bhai"
+        android:paddingBottom="2dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

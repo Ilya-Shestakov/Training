@@ -2,35 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".HalperBtn.QuestionDelete"
-    android:background="@drawable/desine_btns"
+    android:background="@null"
+    android:backgroundTint="@null"
     android:layout_gravity="center"
     >
 
-    <Button
-        android:id="@+id/btnCopy"
-        android:background="@drawable/desine_btn_bottom"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Copy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-        />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:background="@drawable/desine_btn_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCopy"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnCopy"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/desine_small_btns"
+
+            android:backgroundTint="@null">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Copy"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/desine_small_btns"
+            android:layout_marginStart="10dp"
+
+            android:backgroundTint="@null">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Delete"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

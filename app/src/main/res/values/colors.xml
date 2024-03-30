@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_main">#E7F9FF</color>
     <color name="background_btn">#A3F3D9</color>
+    <color name="background_btn3">#80B5F3DF</color>
     <color name="background_btn_Bar">#5AC3A0</color>
     <color name="background_btn2">#8FFFC2</color>
     <color name="background_layouts">#DBF6FF</color>

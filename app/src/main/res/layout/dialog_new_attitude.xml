@@ -15,7 +15,8 @@
         android:fontFamily="@font/baloo_bhai"
         android:text=""
         android:hint="Type"
-        android:textColor="@color/gray"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNameDialog"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +32,8 @@
         android:orientation="horizontal"
         android:paddingBottom="2dp"
         android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
 
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextCountDialog"
@@ -49,8 +50,8 @@
         android:inputType="number"
         android:paddingBottom="2dp"
         android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:maxLength="4"
 
         android:textSize="25dp"
@@ -67,8 +68,8 @@
         android:inputType="number"
         android:paddingBottom="2dp"
         android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
 
         android:maxLength="2"
 
@@ -96,7 +97,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Add"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
 

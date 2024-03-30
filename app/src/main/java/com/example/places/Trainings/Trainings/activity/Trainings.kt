@@ -7,14 +7,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,25 +26,28 @@ import com.example.places.HalperBtn.Bio
 import com.example.places.NewTraining.activity.NewTraining
 import com.example.places.R
 import com.example.places.HalperBtn.Settings
-import com.example.places.Trainings.Trainings.DB.DatalistTrainings
-import com.example.places.Trainings.Trainings.Adapter.MyAdapterTainings
-import com.example.places.Trainings.Trainings.DB.DBHalperTrainings
+import com.example.places.NewTraining.Adapter.MyAdapterNewTraining
+import com.example.places.Trainings.Trainings.Adapter.MyAdapterTrainings
+import com.example.places.Trainings.Trainings.DB.DBTrainings
+import com.example.places.Trainings.Trainings.DB.DatalistTraining
 import com.google.android.material.navigation.NavigationView
 
 class Trainings : AppCompatActivity() {
 
     lateinit var toogle: ActionBarDrawerToggle
     lateinit var dialog: Dialog
-    lateinit var dbh: DBHalperTrainings
-    private lateinit var newArrTrainings: ArrayList<DatalistTrainings>
-    private lateinit var adapter: MyAdapterTainings
+    lateinit var dbh: DBTrainings
+    lateinit var db: DBTrainings
+    private lateinit var newArrTrainings: ArrayList<DatalistTraining>
+    private lateinit var adapter: MyAdapterTrainings
     lateinit var recyclerViewTrainings: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainings)
 
-        dbh = DBHalperTrainings(this)
+        dbh = DBTrainings(this)
+        db = DBTrainings(this)
 
         val drawerLayoutTrainings: DrawerLayout = findViewById(R.id.drawerLayoutTrainings)
         val navVoidTrainings: NavigationView = findViewById(R.id.navViewTraining)
@@ -97,14 +99,6 @@ class Trainings : AppCompatActivity() {
         finish()
     }
 
-    fun btnAddMachineToTrainings(view: View) {
-        dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.activity_add_new_training)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
-    }
-
     fun btnToTrainings(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -154,19 +148,18 @@ class Trainings : AppCompatActivity() {
 
     fun dispayuser() {
         val newcursor: Cursor? = dbh.gettext()
-        newArrTrainings = ArrayList<DatalistTrainings>()
+        newArrTrainings = ArrayList<DatalistTraining>()
         while (newcursor!!.moveToNext()){
             val uname = newcursor.getString(0)
             val udate = newcursor.getString(1)
             val uweight = newcursor.getString(2)
-            newArrTrainings.add(DatalistTrainings(uname, udate, uweight))
+            newArrTrainings.add(DatalistTraining(uname, udate, uweight))
         }
-        adapter = MyAdapterTainings(newArrTrainings)
+        adapter = MyAdapterTrainings(newArrTrainings)
         recyclerViewTrainings.adapter = adapter
-
-        adapter.OnItemClickListener(object: MyAdapterTainings.onItemClickListener {
+        adapter.OnItemClickListener(object: MyAdapterTrainings.onItemClickListener {
             override fun onItemClick(position: Int) {
-                dbh.deleteuserdata(newArrTrainings[position].name, newArrTrainings[position].weight, newArrTrainings[position].date)
+                db.deleteuserdatatraining(newArrTrainings[position].name, newArrTrainings[position].weight, newArrTrainings[position].date)
                 dispayuser()
             }
         })
