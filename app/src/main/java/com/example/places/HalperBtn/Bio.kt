@@ -11,18 +11,20 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.places.Main.MainActivity
 import com.example.places.R
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class Bio : AppCompatActivity() {
 
     lateinit var valueAge: TextView
     lateinit var valueWeight: TextView
-    lateinit var valueDate: EditText
+    lateinit var valueDate: TextView
     private lateinit var slider: SeekBar
     private lateinit var sliderWeight: SeekBar
     private var pref: SharedPreferences? = null
     private var valueAgeInt: Int = 1
     private var valueWeightInt: Int = 1
-    private var valueDateStr: String = "00:00:00"
+    private var valueDateStr = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +38,16 @@ class Bio : AppCompatActivity() {
 
         pref = getSharedPreferences("TABLE", MODE_PRIVATE)
 
+        var date = Date()
+        var s = SimpleDateFormat("dd/MM/yyyy")
+        var dateStr: String = s.format(date)
+
         valueAgeInt = pref?.getInt("Age", 1)!!
         valueWeightInt = pref?.getInt("Weight", 1)!!
-        valueDateStr = pref?.getString("Date", "00:00:00").toString()
+        valueDateStr = pref?.getString("Date", "dateStr").toString()
         valueAge.text = valueAgeInt.toString()
         valueWeight.text = valueWeightInt.toString()
         valueDate.setText(valueDateStr)
-
 
         slider.min = 10
         slider.max = 100
@@ -96,4 +101,10 @@ class Bio : AppCompatActivity() {
         finish()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

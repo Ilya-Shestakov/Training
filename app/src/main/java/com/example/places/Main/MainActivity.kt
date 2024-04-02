@@ -36,58 +36,6 @@ class MainActivity : AppCompatActivity() {
         val btnSettings: ConstraintLayout = findViewById(R.id.btnSettings)
         val btnTraining: ConstraintLayout = findViewById(R.id.btnTraining)
 
-//        btnMore.setOnClickListener { view ->
-//
-//            val UpMenu = PopupMenu(this@MainActivity, view)
-//            UpMenu.inflate(R.menu.opening_btn)
-//            UpMenu.setOnMenuItemClickListener { menuItem ->
-//
-//                when(menuItem.itemId){
-//
-//                    R.id.btnCalendar -> {
-//                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
-//                        true
-//                    }
-//                    R.id.btnBio -> {
-//                        val intent = Intent(this, Bio::class.java)
-//                        startActivity(intent)
-//                        finish()
-//                        true
-//                    }
-//                    R.id.btnCalendar -> {
-//                        Toast.makeText(this@MainActivity, "Calendar", Toast.LENGTH_SHORT).show()
-//                        true
-//                    }
-//                    else ->{
-//                        false
-//                    }
-//                }
-//            }
-//            UpMenu.show()
-//
-//        }
-
-
-//        btnLegs.setOnClickListener {
-//            MethodDispLegs()
-//        }
-//        btnTraining.setOnClickListener {
-//            MethodDispTrainings()
-//        }
-
-//        btnHands.setOnClickListener {
-//            MethodDispHands()
-//        }
-//        btnAll.setOnClickListener {
-//            MethodDispAllTrainers()
-//        }
-//        btnBack.setOnClickListener {
-//            MethodDispBack()
-//        }
-//        btnBosom.setOnClickListener {
-//            MethodDispBosom()
-//        }
-
         btnList.setOnClickListener {
             MethodDispTrainings()
         }
@@ -108,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId)
             {
                 R.id.nav_training -> MethodDispTrainings()
-                R.id.nav_bio -> MethodOpenBio()
+                //R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -182,4 +130,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
 }

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical">
 
@@ -39,111 +39,6 @@
                 android:fontFamily="@font/baloo_bhai"
                 android:gravity="center"
                 android:text="All trainers"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnLegs"
-            android:layout_width="330dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/desine_osn_btn"
-
-            android:backgroundTint="@null"
-            android:baselineAligned="false"
-            app:layout_constraintEnd_toEndOf="@+id/topBlock"
-            app:layout_constraintStart_toStartOf="@+id/topBlock"
-            app:layout_constraintTop_toBottomOf="@+id/topBlock">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:fontFamily="@font/baloo_bhai"
-                android:gravity="center"
-                android:text="Legs"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnHands"
-            android:layout_width="330dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/desine_osn_btn"
-
-            android:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="@+id/topBlock"
-            app:layout_constraintStart_toStartOf="@+id/topBlock"
-            app:layout_constraintTop_toBottomOf="@+id/btnLegs">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:fontFamily="@font/baloo_bhai"
-                android:gravity="center"
-                android:text="Hands"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnBack"
-            android:layout_width="330dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/desine_osn_btn"
-
-            android:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="@+id/topBlock"
-            app:layout_constraintStart_toStartOf="@+id/topBlock"
-            app:layout_constraintTop_toBottomOf="@+id/btnHands">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:fontFamily="@font/baloo_bhai"
-                android:gravity="center"
-                android:text="Back"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnBosom"
-            android:layout_width="330dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/desine_osn_btn"
-
-            android:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="@+id/topBlock"
-            app:layout_constraintStart_toStartOf="@+id/topBlock"
-            app:layout_constraintTop_toBottomOf="@+id/btnBack">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:fontFamily="@font/baloo_bhai"
-                android:gravity="center"
-                android:text="Bosom"
                 android:textColor="@color/black"
                 android:textSize="30dp" />
 

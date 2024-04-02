@@ -7,10 +7,10 @@
         android:id="@+id/nav_menu"
         android:title="Menu">
     </item>
-    <item
-        android:id="@+id/nav_bio"
-        android:title="You Bio">
-    </item>
+<!--    <item-->
+<!--        android:id="@+id/nav_bio"-->
+<!--        android:title="You Bio">-->
+<!--    </item>-->
     <item
         android:id="@+id/nav_newTraining"
         android:title="New trainings">

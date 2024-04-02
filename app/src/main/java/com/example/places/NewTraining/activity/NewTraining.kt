@@ -96,7 +96,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             when(it.itemId)
             {
                 R.id.nav_training -> MethodDispTrainings()
-                R.id.nav_bio -> MethodOpenBio()
+                //R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -125,6 +125,10 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         var editTextTypeDialog = dialog.findViewById<TextView>(R.id.editTextTypeDialog)
         return when (item?.itemId){
+            R.id.btnOtherPopup -> {
+                editTextTypeDialog.setText("Other")
+                return true
+            }
             R.id.btnLegsPopup -> {
                 editTextTypeDialog.setText("Legs")
                 return true
@@ -192,6 +196,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
+
 
 
 
@@ -306,25 +311,59 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     }
 
 
-    fun methodSaveTraining(view: View){
 
-        val TitleDate = findViewById<TextView>(R.id.TitleDate).text
-        val TitleName = findViewById<TextView>(R.id.TitleName).text
 
-        dbSave.savedatatrainings(TitleName.toString(), countWeight.toString(), TitleDate.toString())
 
-        db.deleteAllData("Legs")
-        db.deleteAllData("Hands")
-        db.deleteAllData("Back")
-        db.deleteAllData("Bosom")
-        db.deleteAllData("Other")
 
-        countWeight2 = 0
-        countWeight = 0
 
-        val intent = Intent(this@NewTraining, MainActivity::class.java)
+//                          DESTROY
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+
+
+
+    fun methodSaveTraining(view: View){
+
+        dialog = Dialog(this@NewTraining)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.question_save)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+
+        val btnYes: ConstraintLayout = dialog.findViewById(R.id.btnSave)
+        val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnNo)
+
+        btnYes.setOnClickListener {
+
+            val TitleDate = findViewById<TextView>(R.id.TitleDate).text
+            val TitleName = findViewById<TextView>(R.id.TitleName).text
+
+            dbSave.savedatatrainings(TitleName.toString(), countWeight.toString(), TitleDate.toString())
+
+            db.deleteAllData("Legs")
+            db.deleteAllData("Hands")
+            db.deleteAllData("Back")
+            db.deleteAllData("Bosom")
+            db.deleteAllData("Other")
+
+            countWeight2 = 0
+            countWeight = 0
+
+            val intent = Intent(this@NewTraining, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        btnNo.setOnClickListener {
+            dispayuser()
+            dialog.cancel()
+        }
 
     }
 
@@ -437,13 +476,13 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     fun btnUpDay(view: View){
         if (countDay < 31){
-            var idDay = findViewById<TextView>(R.id.IdDay)
+            var idDay = dialog.findViewById<TextView>(R.id.IdDay)
             countDay++
             idDay.setText(countDay.toString())
         }
     }
     fun btnDownDay(view: View){
-        var idDay = findViewById<TextView>(R.id.IdDay)
+        var idDay = dialog.findViewById<TextView>(R.id.IdDay)
         if (countDay >= 1){
             countDay--
         }
@@ -451,13 +490,13 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     }
     fun btnUpMonth(view: View){
         if(countMonth<12){
-            var idMonth = findViewById<TextView>(R.id.IdMonth)
+            var idMonth = dialog.findViewById<TextView>(R.id.IdMonth)
             countMonth++
             idMonth.setText(countMonth.toString())
         }
     }
     fun btnDownMonth(view: View){
-        var idMonth = findViewById<TextView>(R.id.IdMonth)
+        var idMonth = dialog.findViewById<TextView>(R.id.IdMonth)
         if (countMonth >= 1){
             countMonth--
         }
@@ -465,13 +504,13 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     }
     fun btnUpYear(view: View){
         if (countYear < 99){
-            var idYear = findViewById<TextView>(R.id.IdYear)
+            var idYear = dialog.findViewById<TextView>(R.id.IdYear)
             countYear++
             idYear.setText(countYear.toString())
         }
     }
     fun btnDownYear(view: View){
-        var idYear = findViewById<TextView>(R.id.IdYear)
+        var idYear = dialog.findViewById<TextView>(R.id.IdYear)
         if (countYear >= 1){
             countYear--
         }

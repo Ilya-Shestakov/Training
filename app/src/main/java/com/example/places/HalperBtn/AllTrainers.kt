@@ -59,7 +59,7 @@ class AllTrainers : AppCompatActivity() {
             when(it.itemId)
             {
                 R.id.nav_training -> MethodDispTrainings()
-                R.id.nav_bio -> MethodDispBio()
+                //R.id.nav_bio -> MethodDispBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -77,6 +77,14 @@ class AllTrainers : AppCompatActivity() {
         dispayuserAll()
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 
     private fun MethodDispSettings() {
         val intent = Intent(this, Settings::class.java)

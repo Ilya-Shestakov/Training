@@ -67,7 +67,7 @@ class Trainings : AppCompatActivity() {
         navVoidTrainings.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_training -> MethodDispTrainings()
-                R.id.nav_bio -> MethodOpenBio()
+                //R.id.nav_bio -> MethodOpenBio()
                 R.id.nav_menu -> MethodDispMenu()
                 R.id.nav_legs -> MethodDispLegs()
                 R.id.nav_hands -> MethodDispHands()
@@ -145,6 +145,12 @@ class Trainings : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
     fun dispayuser() {
         val newcursor: Cursor? = dbh.gettext()
@@ -159,62 +165,26 @@ class Trainings : AppCompatActivity() {
         recyclerViewTrainings.adapter = adapter
         adapter.OnItemClickListener(object: MyAdapterTrainings.onItemClickListener {
             override fun onItemClick(position: Int) {
-                db.deleteuserdatatraining(newArrTrainings[position].name, newArrTrainings[position].weight, newArrTrainings[position].date)
-                dispayuser()
+                dialog = Dialog(this@Trainings)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.setContentView(R.layout.delete_question)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
+
+                val btnYes: ConstraintLayout = dialog.findViewById(R.id.btnDelete)
+                val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnNo)
+
+                btnYes.setOnClickListener {
+                    db.deleteuserdatatraining(newArrTrainings[position].name, newArrTrainings[position].weight, newArrTrainings[position].date)
+                    dispayuser()
+                    dialog.cancel()
+                }
+                btnNo.setOnClickListener{
+                    dispayuser()
+                    dialog.cancel()
+                }
             }
         })
     }
-
-    // UP DOWN COUNT
-
-    var countDay = 0
-    var countMonth = 0
-    var countYear = 0
-
-    fun btnUpDay(view: View){
-        if (countDay < 31){
-            var idDay = dialog.findViewById<TextView>(R.id.IdDay)
-            countDay++
-            idDay.setText(countDay.toString())
-        }
-    }
-    fun btnDownDay(view: View){
-        var idDay = dialog.findViewById<TextView>(R.id.IdDay)
-        if (countDay >= 1){
-            countDay--
-        }
-        idDay.setText(countDay.toString())
-    }
-    fun btnUpMonth(view: View){
-        if(countMonth<12){
-            var idMonth = dialog.findViewById<TextView>(R.id.IdMonth)
-            countMonth++
-            idMonth.setText(countMonth.toString())
-        }
-    }
-    fun btnDownMonth(view: View){
-        var idMonth = dialog.findViewById<TextView>(R.id.IdMonth)
-        if (countMonth >= 1){
-            countMonth--
-        }
-        idMonth.setText(countMonth.toString())
-    }
-    fun btnUpYear(view: View){
-        if (countYear < 99){
-            var idYear = dialog.findViewById<TextView>(R.id.IdYear)
-            countYear++
-            idYear.setText(countYear.toString())
-        }
-    }
-    fun btnDownYear(view: View){
-        var idYear = dialog.findViewById<TextView>(R.id.IdYear)
-        if (countYear >= 1){
-            countYear--
-        }
-        idYear.setText(countYear.toString())
-    }
-
-
-    // FINISH UP DOWN COUNT
 
 }

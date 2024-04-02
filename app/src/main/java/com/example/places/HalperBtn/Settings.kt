@@ -18,27 +18,27 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         val btnAll: ConstraintLayout = findViewById(R.id.btnAllTrainers)
-        val btnLegs: ConstraintLayout = findViewById(R.id.btnLegs)
-        val btnHands: ConstraintLayout = findViewById(R.id.btnHands)
-        val btnBack: ConstraintLayout = findViewById(R.id.btnBack)
-        val btnBosom: ConstraintLayout = findViewById(R.id.btnBosom)
+//        val btnLegs: ConstraintLayout = findViewById(R.id.btnLegs)
+//        val btnHands: ConstraintLayout = findViewById(R.id.btnHands)
+//        val btnBack: ConstraintLayout = findViewById(R.id.btnBack)
+//        val btnBosom: ConstraintLayout = findViewById(R.id.btnBosom)
 
         btnAll.setOnClickListener{
             MethodDispAllTrainers()
         }
-
-        btnLegs.setOnClickListener {
-            MethodDispLegs()
-        }
-        btnHands.setOnClickListener {
-            MethodDispHands()
-        }
-        btnBack.setOnClickListener {
-            MethodDispBack()
-        }
-        btnBosom.setOnClickListener {
-            MethodDispBosom()
-        }
+//
+//        btnLegs.setOnClickListener {
+//            MethodDispLegs()
+//        }
+//        btnHands.setOnClickListener {
+//            MethodDispHands()
+//        }
+//        btnBack.setOnClickListener {
+//            MethodDispBack()
+//        }
+//        btnBosom.setOnClickListener {
+//            MethodDispBosom()
+//        }
     }
 
     private fun MethodDispLegs() {
@@ -76,5 +76,13 @@ class Settings : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 
 }

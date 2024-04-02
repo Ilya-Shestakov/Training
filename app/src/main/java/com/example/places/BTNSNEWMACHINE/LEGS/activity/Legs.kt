@@ -67,7 +67,7 @@ class Legs : AppCompatActivity() {
                 when(it.itemId)
                 {
                     R.id.nav_training -> MethodDispTrainings()
-                    R.id.nav_bio -> MethodOpenBio()
+                    //R.id.nav_bio -> MethodOpenBio()
                     R.id.nav_menu -> MethodDispMenu()
                     R.id.nav_legs -> MethodDispLegs()
                     R.id.nav_hands -> MethodDispHands()
