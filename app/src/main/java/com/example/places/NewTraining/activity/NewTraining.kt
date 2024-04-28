@@ -71,7 +71,6 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
         recyclerViewAttitude = findViewById(R.id.recyclerViewAttitude)
 
-
         recyclerViewAttitude.layoutManager = LinearLayoutManager(this)
         recyclerViewAttitude.setHasFixedSize(true)
         dispayuser()
@@ -241,10 +240,12 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             dbBs.saveuserdata(editTextNameDialog)
         }
         if (editTextNameDialog != ""){
-            var notNeeed = editTextCountDialog.toInt() * editTextWeightDialog.toInt()
-            var summEdits: String = notNeeed.toString()
 
-            db.saveuserdata(editTextNameDialog, summEdits, editTextTypeDialog)
+            var summEdits = "$editTextCountDialog/$editTextWeightDialog"
+            var fullWeight = editTextCountDialog.toInt() * editTextWeightDialog.toInt()
+
+
+            db.saveuserdata(editTextNameDialog, summEdits, fullWeight.toString(), editTextTypeDialog)
             dialog.cancel()
 
             dispayuser()
@@ -271,11 +272,12 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
             val uname = newcursor.getString(0)
             val uweight = newcursor.getString(1)
-            val utype = newcursor.getString(2)
+            val fullWeight = newcursor.getString(2)
+            val utype = newcursor.getString(3)
 
-            newArrayAttitude.add(DatalistNewAttitude(uname, uweight, utype))
+            newArrayAttitude.add(DatalistNewAttitude(uname, uweight, fullWeight, utype))
 
-            countWeight2 = uweight.toString().toInt()
+            countWeight2 = fullWeight.toString().toInt()
         }
         countWeight += countWeight2
         countWeight2 = 0
@@ -296,12 +298,13 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnDelete)
 
                 btnYes.setOnClickListener {
-                    db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].type)
+                    db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
                 }
+
                 btnNo.setOnClickListener {
-                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].type)
+                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
                     countWeight -= newArrayAttitude[position].weight.toInt()
                     dispayuser()
                     dialog.cancel()

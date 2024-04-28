@@ -39,5 +39,4 @@ class DBHalperBack(context: Context): SQLiteOpenHelper(context, "UserdataBack", 
         return cursor
     }
 
-
 }

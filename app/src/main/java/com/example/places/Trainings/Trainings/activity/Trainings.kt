@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -161,6 +162,7 @@ class Trainings : AppCompatActivity() {
             val uweight = newcursor.getString(2)
             newArrTrainings.add(DatalistTraining(uname, udate, uweight))
         }
+
         adapter = MyAdapterTrainings(newArrTrainings)
         recyclerViewTrainings.adapter = adapter
         adapter.OnItemClickListener(object: MyAdapterTrainings.onItemClickListener {
