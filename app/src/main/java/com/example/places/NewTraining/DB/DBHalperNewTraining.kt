@@ -27,7 +27,7 @@ class DBHalperNewTraining(context: Context): SQLiteOpenHelper(context, "Userdata
         return result != (-1).toLong()
     }
 
-    fun deleteuserdata(name: String, weight: String, type: String, fullWeight: String): Boolean {
+    fun deleteuserdata(name: String, weight: String, fullWeight: String, type: String): Boolean {
         val p0 = this.writableDatabase
         val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where name=? and weight=?  and fullWeight=? and type=?", arrayOf(name, weight, fullWeight, type))
             val result = p0.delete("UserdataAttitude", "name=? and weight=? and fullWeight=? and type=?", arrayOf(name, weight, fullWeight, type))

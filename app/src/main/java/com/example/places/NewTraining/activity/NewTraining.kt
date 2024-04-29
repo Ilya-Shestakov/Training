@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.Button
 import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -290,22 +289,21 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
                 dialog = Dialog(this@NewTraining)
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.setContentView(R.layout.activity_question_delete)
+                dialog.setContentView(R.layout.delete_question)
                 dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
 
-                val btnYes: ConstraintLayout = dialog.findViewById(R.id.btnCopy)
-                val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnDelete)
+                val btnDelete: ConstraintLayout = dialog.findViewById(R.id.btnDeleteInNewTR)
+                val btnCopy: ConstraintLayout = dialog.findViewById(R.id.btnCopyInNewTR)
 
-                btnYes.setOnClickListener {
-                    db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
+                btnDelete.setOnClickListener {
+                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
                 }
 
-                btnNo.setOnClickListener {
-                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
-                    countWeight -= newArrayAttitude[position].weight.toInt()
+                btnCopy.setOnClickListener {
+                    db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
                 }

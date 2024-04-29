@@ -5,16 +5,16 @@ import android.content.Intent
 import android.database.Cursor
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.icu.text.CaseMap.Title
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat.startActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +27,6 @@ import com.example.places.HalperBtn.Bio
 import com.example.places.NewTraining.activity.NewTraining
 import com.example.places.R
 import com.example.places.HalperBtn.Settings
-import com.example.places.NewTraining.Adapter.MyAdapterNewTraining
 import com.example.places.Trainings.Trainings.Adapter.MyAdapterTrainings
 import com.example.places.Trainings.Trainings.DB.DBTrainings
 import com.example.places.Trainings.Trainings.DB.DatalistTraining
@@ -167,23 +166,58 @@ class Trainings : AppCompatActivity() {
         recyclerViewTrainings.adapter = adapter
         adapter.OnItemClickListener(object: MyAdapterTrainings.onItemClickListener {
             override fun onItemClick(position: Int) {
+
                 dialog = Dialog(this@Trainings)
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.setContentView(R.layout.delete_question)
+                dialog.setContentView(R.layout.activity_question_delete_redact)
                 dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
 
-                val btnYes: ConstraintLayout = dialog.findViewById(R.id.btnDelete)
-                val btnNo: ConstraintLayout = dialog.findViewById(R.id.btnNo)
+                val btnRedact: ConstraintLayout = dialog.findViewById(R.id.btnRedactInRefTraining)
+                val btnDelete: ConstraintLayout = dialog.findViewById(R.id.btnDeleteInRefTrining)
 
-                btnYes.setOnClickListener {
+                btnDelete.setOnClickListener {
                     db.deleteuserdatatraining(newArrTrainings[position].name, newArrTrainings[position].weight, newArrTrainings[position].date)
                     dispayuser()
                     dialog.cancel()
                 }
-                btnNo.setOnClickListener{
-                    dispayuser()
+
+                btnRedact.setOnClickListener {
+
                     dialog.cancel()
+
+                    dialog = Dialog(this@Trainings)
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                    dialog.setContentView(R.layout.activity_refact_trining)
+                    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    dialog.show()
+
+                    var TitleInRef: TextView = dialog.findViewById(R.id.textNameRefact)
+
+                    TitleInRef.setText(newArrTrainings[position].name)
+
+                    val EditTextInRefName: EditText = dialog.findViewById(R.id.editTextNameRefact)
+                    val EditTextInRefWeight: EditText = dialog.findViewById(R.id.editTextWeightRefact)
+                    val btnInRafSave: ConstraintLayout = dialog.findViewById(R.id.btnSaveRef)
+
+                    btnInRafSave.setOnClickListener{
+                        if (EditTextInRefName.toString().trim().isNotEmpty()){
+
+                            db.updatauserdatatrainingsName(newArrTrainings[position].name, EditTextInRefName.text.toString())
+                            dispayuser()
+                            dialog.cancel()
+
+                        }
+
+                        if (EditTextInRefWeight.text.toString().trim().isNotEmpty()){
+
+                            db.updatauserdatatrainingsWeight(newArrTrainings[position].name, EditTextInRefWeight.text.toString())
+                            dispayuser()
+                            dialog.cancel()
+
+                        }
+                    }
+
                 }
             }
         })
