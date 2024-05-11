@@ -200,7 +200,6 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
 
 
-
     //                              Save data
 
 
@@ -210,8 +209,12 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     fun btnAddAttitude(view: View){
 
+
+        // Weight
         var editTextWeightDialog = dialog.findViewById<EditText>(R.id.editTextWeightDialog).text.toString().trim()
         var editTextCountDialog = dialog.findViewById<EditText>(R.id.editTextCountDialog).text.toString().trim()
+
+        var count = "0"
 
         if (editTextCountDialog == ""){
             editTextCountDialog = "0"
@@ -243,8 +246,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             var summEdits = "$editTextCountDialog/$editTextWeightDialog"
             var fullWeight = editTextCountDialog.toInt() * editTextWeightDialog.toInt()
 
-
-            db.saveuserdata(editTextNameDialog, summEdits, fullWeight.toString(), editTextTypeDialog)
+            db.saveuserdata(editTextNameDialog, summEdits, count, fullWeight.toString(), editTextTypeDialog)
             dialog.cancel()
 
             dispayuser()
@@ -271,10 +273,13 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
             val uname = newcursor.getString(0)
             val uweight = newcursor.getString(1)
-            val fullWeight = newcursor.getString(2)
-            val utype = newcursor.getString(3)
+            val ucount = newcursor.getString(2)
+            val fullWeight = newcursor.getString(3)
+            val utype = newcursor.getString(4)
 
-            newArrayAttitude.add(DatalistNewAttitude(uname, uweight, fullWeight, utype))
+            var weightWithCount: String = ucount + "/" + uweight
+
+            newArrayAttitude.add(DatalistNewAttitude(uname, weightWithCount, fullWeight, utype))
 
             countWeight2 = fullWeight.toString().toInt()
         }
@@ -297,15 +302,15 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val btnCopy: ConstraintLayout = dialog.findViewById(R.id.btnCopyInNewTR)
 
                 btnDelete.setOnClickListener {
-                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
+                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight,  newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
                 }
 
                 btnCopy.setOnClickListener {
-                    db.saveuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
-                    dispayuser()
+                    db.updatauserdatanewtrainingsCount(newArrayAttitude[position].weight, newArrayAttitude[position].weight + "1")
                     dialog.cancel()
+                    dispayuser()
                 }
             }
         })
@@ -365,7 +370,6 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             dispayuser()
             dialog.cancel()
         }
-
     }
 
     fun btnCheckName(view: View){

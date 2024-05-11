@@ -9,13 +9,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnCheckName"
         android:onClick="btnCheckName"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNewTrainings"
         app:layout_constraintStart_toStartOf="@+id/editTextNewTrainings"
         app:layout_constraintEnd_toEndOf="@+id/editTextNewTrainings"
-        android:background="@drawable/shadow_and_border"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/desine_small_btns"
+
+        android:backgroundTint="@null"
         >
         <ImageView
             android:layout_width="match_parent"
@@ -35,8 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Name..."
-        android:textColorHint="@color/gray"
-        android:textColor="@color/black"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:fontFamily="@font/baloo_bhai"
         android:paddingBottom="2dp"
         />

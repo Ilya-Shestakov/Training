@@ -28,7 +28,6 @@ class MyAdapterNewTraining(var userList: ArrayList<DatalistNewAttitude>): Recycl
                 listener.onItemClick(adapterPosition)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

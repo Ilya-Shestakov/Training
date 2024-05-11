@@ -11,7 +11,11 @@
         android:onClick="btnCheckDate"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/shadow_and_border"
+
+        android:layout_gravity="center"
+        android:background="@drawable/desine_small_btns"
+
+        android:backgroundTint="@null"
 
         app:layout_constraintTop_toBottomOf="@+id/LinearWithDate"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +62,7 @@
                 android:text="0"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/baloo_bhai"
                 />
 
@@ -93,7 +97,7 @@
                 android:text="0"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/baloo_bhai"
                 />
 
@@ -128,7 +132,7 @@
                 android:text="0"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/baloo_bhai"
                 />
 

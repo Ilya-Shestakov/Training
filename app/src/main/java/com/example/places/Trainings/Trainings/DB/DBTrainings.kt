@@ -64,5 +64,4 @@ class DBTrainings(context: Context): SQLiteOpenHelper(context, "UserDataBaseTrai
         val cursor = p0.rawQuery("select * from UserDataBaseTrainings", null)
         return cursor
     }
-
 }

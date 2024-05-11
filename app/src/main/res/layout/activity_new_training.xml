@@ -31,20 +31,20 @@
                 <TextView
                     android:id="@+id/TitleName"
 
-                    android:onClick="methodEditName"
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:background="@null"
-
-                    android:paddingHorizontal="30dp"
                     android:backgroundTint="@null"
                     android:fontFamily="@font/baloo_bhai"
+
                     android:gravity="center"
+                    android:onClick="methodEditName"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="30dp"
                     android:text="Name"
                     android:textColor="@color/black"
 
-                    android:textSize="40dp"/>
+                    android:textSize="40dp" />
             </HorizontalScrollView>
             <TextView
                 android:id="@+id/TitleDate"
