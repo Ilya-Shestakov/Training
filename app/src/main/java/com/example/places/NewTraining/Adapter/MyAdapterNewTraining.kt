@@ -22,6 +22,7 @@ class MyAdapterNewTraining(var userList: ArrayList<DatalistNewAttitude>): Recycl
     {
         val tNameAttitude: TextView = itemView.findViewById(R.id.textViewNameAttitude)
         val tWeightAttitude: TextView = itemView.findViewById(R.id.textViewWeightAttitude)
+        val tCountAttitude: TextView = itemView.findViewById(R.id.textViewCountAttitude)
         val textViewTypeAttitude: TextView = itemView.findViewById(R.id.textViewTypeAttitude)
         init{
             itemView.setOnClickListener {
@@ -43,6 +44,7 @@ class MyAdapterNewTraining(var userList: ArrayList<DatalistNewAttitude>): Recycl
         val currentItem = userList[position]
         holder.tNameAttitude.text = currentItem.name
         holder.tWeightAttitude.text = currentItem.weight
+        holder.tCountAttitude.text = currentItem.count
         holder.textViewTypeAttitude.text = currentItem.type
     }
 

@@ -198,11 +198,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
 
 
-
-
-    //                              Save data
-
-
+    //                              Save data ATTITUDE
 
 
 
@@ -214,7 +210,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         var editTextWeightDialog = dialog.findViewById<EditText>(R.id.editTextWeightDialog).text.toString().trim()
         var editTextCountDialog = dialog.findViewById<EditText>(R.id.editTextCountDialog).text.toString().trim()
 
-        var count = "0"
+        var count = "1"
 
         if (editTextCountDialog == ""){
             editTextCountDialog = "0"
@@ -243,10 +239,16 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         }
         if (editTextNameDialog != ""){
 
-            var summEdits = "$editTextCountDialog/$editTextWeightDialog"
-            var fullWeight = editTextCountDialog.toInt() * editTextWeightDialog.toInt()
+            var summEdits = "|  $editTextCountDialog/$editTextWeightDialog"
 
-            db.saveuserdata(editTextNameDialog, summEdits, count, fullWeight.toString(), editTextTypeDialog)
+            var textItogWeight = findViewById<TextView>(R.id.textItogWeight)        // Счётчик на экране
+
+            var itogWeightAtt = textItogWeight.text.toString().toInt() + (editTextCountDialog.toInt() * editTextWeightDialog.toInt())     // Пром значение
+
+            textItogWeight.setText(itogWeightAtt.toString())
+
+            db.saveuserdata(editTextNameDialog, summEdits, count, editTextTypeDialog)
+
             dialog.cancel()
 
             dispayuser()
@@ -261,32 +263,32 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     //                              DISPLAY
 
 
-    var countWeight = 0
-    var countWeight2 = 0
-
-
     fun dispayuser() {
 
         val newcursor: Cursor? = db.gettext()
         newArrayAttitude = ArrayList<DatalistNewAttitude>()
+
+        //            CURSOR
+
         while (newcursor!!.moveToNext()){
 
             val uname = newcursor.getString(0)
             val uweight = newcursor.getString(1)
             val ucount = newcursor.getString(2)
-            val fullWeight = newcursor.getString(3)
-            val utype = newcursor.getString(4)
+            val utype = newcursor.getString(3)
 
-            var weightWithCount: String = ucount + "/" + uweight
-
-            newArrayAttitude.add(DatalistNewAttitude(uname, weightWithCount, fullWeight, utype))
-
-            countWeight2 = fullWeight.toString().toInt()
+            newArrayAttitude.add(DatalistNewAttitude(uname, uweight, ucount, utype))
         }
-        countWeight += countWeight2
-        countWeight2 = 0
+
         adapter = MyAdapterNewTraining(newArrayAttitude)
         recyclerViewAttitude.adapter = adapter
+
+
+
+        //              TAP
+
+
+
         adapter.OnItemClickListener(object: MyAdapterNewTraining.onItemClickListener {
             override fun onItemClick(position: Int) {
 
@@ -302,15 +304,15 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val btnCopy: ConstraintLayout = dialog.findViewById(R.id.btnCopyInNewTR)
 
                 btnDelete.setOnClickListener {
-                    db.deleteuserdata(newArrayAttitude[position].name, newArrayAttitude[position].weight,  newArrayAttitude[position].fullWeight, newArrayAttitude[position].type)
+                    db.deletecount(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].count, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
                 }
 
                 btnCopy.setOnClickListener {
-                    db.updatauserdatanewtrainingsCount(newArrayAttitude[position].weight, newArrayAttitude[position].weight + "1")
-                    dialog.cancel()
+                    db.updatauserdatanewtrainingsCount(newArrayAttitude[position].count, (newArrayAttitude[position].count.toInt() + 1).toString())
                     dispayuser()
+                    dialog.cancel()
                 }
             }
         })
@@ -351,7 +353,9 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             val TitleDate = findViewById<TextView>(R.id.TitleDate).text
             val TitleName = findViewById<TextView>(R.id.TitleName).text
 
-            dbSave.savedatatrainings(TitleName.toString(), countWeight.toString(), TitleDate.toString())
+            var textItogWeight = findViewById<TextView>(R.id.textItogWeight)  // Счётчик на экране
+
+            dbSave.savedatatrainings(TitleName.toString(), textItogWeight.toString() + "кг", TitleDate.toString())
 
             db.deleteAllData("Legs")
             db.deleteAllData("Hands")
@@ -359,8 +363,6 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             db.deleteAllData("Bosom")
             db.deleteAllData("Other")
 
-            countWeight2 = 0
-            countWeight = 0
 
             val intent = Intent(this@NewTraining, MainActivity::class.java)
             startActivity(intent)
