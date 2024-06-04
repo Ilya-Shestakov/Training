@@ -307,12 +307,36 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                     db.deletecount(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].count, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
+
+                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+
+                    val result = splitString(newArrayAttitude[position].weight)
+
+                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
+
+                    textItogWeight.setText((textItogWeight.text.toString().toInt() - weightAttitued).toString())
+//
+//                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)        // Счётчик на экране
+//
+//                    var itogWeightAtt = textItogWeight.text.toString().toInt() - (newArrayAttitude[position].count.toInt() * newArrayAttitude[position].weight.toInt())     // Пром значение
+//
+//                    textItogWeight.setText(itogWeightAtt.toString())
+
                 }
 
                 btnCopy.setOnClickListener {
                     db.updatauserdatanewtrainingsCount(newArrayAttitude[position].count, (newArrayAttitude[position].count.toInt() + 1).toString())
                     dispayuser()
                     dialog.cancel()
+
+                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+
+                    val result = splitString(newArrayAttitude[position].weight)
+
+                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
+
+                    textItogWeight.setText((textItogWeight.text.toString().toInt() + weightAttitued).toString())
+
                 }
             }
         })
@@ -320,6 +344,48 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
 
 
+
+
+
+    //                           FUN SPLIT STRING WEIGHT
+    fun splitString(inputString: String): Pair<String, String> {
+        val index = inputString.indexOf('/')
+        return if (index != -1) {
+            Pair(inputString.substring(3, index), inputString.substring(index + 1))
+        } else {
+            Pair("Error: Slash not found in the input string", "")
+        }
+    }
+
+
+//
+//
+//    lateinit var frontSlesh: String
+//    lateinit var backSlesh: String
+//    var indexElement: Int = 0
+//    var ItogWeight: Int = 0
+//
+//
+//    fun fullWeight(string: String): Int{
+//
+//        for(i in 0..string.length - 1){
+//            while (string[i] != '/'){
+//                frontSlesh += string[i].toString()
+//                indexElement = i+1
+//            }
+//            for (g in indexElement..string.length){
+//                backSlesh != string[g].toString()
+//            }
+//        }
+//
+//        ItogWeight = frontSlesh.toInt() * backSlesh.toInt()
+//
+//        return ItogWeight
+//
+//        ItogWeight = 0
+//        frontSlesh = ""
+//        backSlesh = ""
+//    }
 
 
 
