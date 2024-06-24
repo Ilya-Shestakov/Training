@@ -29,7 +29,7 @@ class DBHalperNewTraining(context: Context): SQLiteOpenHelper(context, "Userdata
 
     fun deletecount(name: String, weight: String, count: String, type: String) {
         if (count != "1"){
-            updatauserdatanewtrainingsCount(count, (count.toInt()-1).toString())
+            updatauserdatanewtrainingsCount(name, weight, type,count, (count.toInt()-1).toString())
         } else {
             deleteuserdata(name, weight, count, type)
         }
@@ -43,13 +43,13 @@ class DBHalperNewTraining(context: Context): SQLiteOpenHelper(context, "Userdata
         return false
     }
 
-    fun updatauserdatanewtrainingsCount(oldCount: String, newCount: String): Boolean {
+    fun updatauserdatanewtrainingsCount(name: String, weight: String, type: String, oldCount: String, newCount: String): Boolean {
         val p0 = this.writableDatabase
         val cv = ContentValues()
         cv.put("count", newCount)
-        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where count=?", arrayOf(oldCount))
+        val cursor: Cursor = p0.rawQuery("select * from UserdataAttitude where name=? and weight=? and count=? and type=?", arrayOf(name, weight, oldCount, type))
         if (cursor.count>0) {
-            val result = p0.update("UserdataAttitude", cv, "count=?", arrayOf(oldCount))
+            val result = p0.update("UserdataAttitude", cv, "name=? and weight=? and count=? and type=?", arrayOf(name, weight, oldCount, type))
             return result != -1
         }
         return false

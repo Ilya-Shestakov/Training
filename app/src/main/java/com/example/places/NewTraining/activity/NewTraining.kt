@@ -43,13 +43,18 @@ import java.util.Date
 class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     lateinit var toogle: ActionBarDrawerToggle
+
     lateinit var db: DBHalperNewTraining
     lateinit var dbSave: DBTrainings
     lateinit var dbL: DBHalperLegs
     lateinit var dbH: DBHalperHands
     lateinit var dbB: DBHalperBack
     lateinit var dbBs: DBHalperBosom
+
+    var staticWeight: Int = 0
+
     lateinit var dialog: Dialog
+
     lateinit var newArrayAttitude: ArrayList<DatalistNewAttitude>
     private lateinit var adapter: MyAdapterNewTraining
     private lateinit var recyclerViewAttitude: RecyclerView
@@ -57,6 +62,11 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_training)
+
+
+        var textItogWeight = findViewById<TextView>(R.id.textItogWeight)
+
+        textItogWeight.setText(staticWeight.toString())
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutNewTrainings)
         val navVoid: NavigationView = findViewById(R.id.navView)
@@ -278,7 +288,17 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             val utype = newcursor.getString(3)
 
             newArrayAttitude.add(DatalistNewAttitude(uname, uweight, ucount, utype))
+
+            var resOdin = splitString(newcursor.getString(1).toString())
+
+            staticWeight += ((resOdin.first).toInt() * (resOdin.second).toInt()) * newcursor.getString(2).toInt()
+
         }
+
+
+        var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+
+        textItogWeight.setText(staticWeight.toString())
 
         adapter = MyAdapterNewTraining(newArrayAttitude)
         recyclerViewAttitude.adapter = adapter
@@ -304,18 +324,23 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val btnCopy: ConstraintLayout = dialog.findViewById(R.id.btnCopyInNewTR)
 
                 btnDelete.setOnClickListener {
+
+
+
+//                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+//
+//                    val result = splitString(newArrayAttitude[position].weight)
+//
+//                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
+//
+//                    staticWeight = (textItogWeight.text.toString().toInt() - weightAttitued)
+//
+//                    textItogWeight.setText(staticWeight.toString())
+
                     db.deletecount(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].count, newArrayAttitude[position].type)
                     dispayuser()
                     dialog.cancel()
 
-                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
-
-                    val result = splitString(newArrayAttitude[position].weight)
-
-                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
-
-                    textItogWeight.setText((textItogWeight.text.toString().toInt() - weightAttitued).toString())
-//
 //                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)        // Счётчик на экране
 //
 //                    var itogWeightAtt = textItogWeight.text.toString().toInt() - (newArrayAttitude[position].count.toInt() * newArrayAttitude[position].weight.toInt())     // Пром значение
@@ -325,17 +350,26 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 }
 
                 btnCopy.setOnClickListener {
-                    db.updatauserdatanewtrainingsCount(newArrayAttitude[position].count, (newArrayAttitude[position].count.toInt() + 1).toString())
+
+
+
+                    db.updatauserdatanewtrainingsCount(newArrayAttitude[position].name, newArrayAttitude[position].weight, newArrayAttitude[position].type, newArrayAttitude[position].count, (newArrayAttitude[position].count.toInt() + 1).toString())
                     dispayuser()
                     dialog.cancel()
 
-                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+//
+//
+//                    var textItogWeight = findViewById<TextView>(R.id.textItogWeight)       // Счётчик на экране
+//
+//                    val result = splitString(newArrayAttitude[position].weight)
+//
+//                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
+//
+//                    staticWeight = (textItogWeight.text.toString().toInt() + weightAttitued)
+//
+//                    textItogWeight.setText(staticWeight.toString())
 
-                    val result = splitString(newArrayAttitude[position].weight)
 
-                    var weightAttitued = (result.first).toInt() * (result.second).toInt()
-
-                    textItogWeight.setText((textItogWeight.text.toString().toInt() + weightAttitued).toString())
 
                 }
             }
@@ -421,7 +455,7 @@ class NewTraining : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
             var textItogWeight = findViewById<TextView>(R.id.textItogWeight)  // Счётчик на экране
 
-            dbSave.savedatatrainings(TitleName.toString(), textItogWeight.toString() + "кг", TitleDate.toString())
+            dbSave.savedatatrainings(TitleName.toString(), textItogWeight.text.toString() + "кг", TitleDate.toString())
 
             db.deleteAllData("Legs")
             db.deleteAllData("Hands")
